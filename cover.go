@@ -118,15 +118,15 @@ func (c *Cover) coverImgRect() image.Rectangle {
 	var (
 		coverPadding = PaddingPctH * c.Width / Denominator
 		MaxY         = PrimaryBarPosPctH * c.Height / Denominator
-		imgSize      = ImageSizePctH * c.Height / Denominator
+		imgHeight    = ImageSizePctH * c.Height / Denominator
 	)
 	return image.Rectangle{
 		Min: image.Point{
 			X: coverPadding,
-			Y: MaxY - imgSize,
+			Y: MaxY - imgHeight,
 		},
 		Max: image.Point{
-			X: coverPadding + imgSize,
+			X: c.Width - coverPadding,
 			Y: MaxY,
 		},
 	}
