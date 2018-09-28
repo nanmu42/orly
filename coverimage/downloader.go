@@ -1,3 +1,5 @@
+// +build downloader
+
 /*
  * Copyright (c) 2018 LI Zhennan
  *
