@@ -9,9 +9,13 @@
 package orly
 
 import (
+	"fmt"
 	"image"
 	"image/color"
 	"image/draw"
+	"strconv"
+
+	"github.com/pkg/errors"
 )
 
 const (
@@ -32,30 +36,17 @@ const (
 
 // Cover O RLY cover
 type Cover struct {
-	// Contents
-
-	// Book title on big color bar
-	Title string
-	// text that goes up most
-	TopText string
-	// in down left corner
-	Author string
-	// around title
-	GuideText string
-	// predefined, four corner
-	GuideTextPosition string
-
-	// TODO: add picture, color, press name and press icon
+	// TODO: add press name and press icon
 
 	Width  int
 	Height int
 
-	// Color of bar
-	PrimaryColor color.Color
+	// CoverProvider provides cached cover images
+	CoverProvider *ImageProvider
 }
 
 // Draw outputs the cover in image
-func (c *Cover) Draw() (img *image.RGBA, err error) {
+func (c *Cover) Draw( /*title string, topText string, author string, guideText string, guideTextPosition string, */ primaryColor color.Color, imageID int) (img *image.RGBA, err error) {
 	img = image.NewRGBA(image.Rectangle{
 		Min: image.ZP,
 		Max: image.Point{c.Width, c.Height},
@@ -65,11 +56,31 @@ func (c *Cover) Draw() (img *image.RGBA, err error) {
 	draw.Draw(img, img.Rect, image.White, image.ZP, draw.Src)
 
 	// draw two bars
-	draw.Draw(img, c.secondaryBarRect(), image.NewUniform(c.PrimaryColor), image.ZP, draw.Src)
-	draw.Draw(img, c.primaryBarRect(), image.NewUniform(c.PrimaryColor), image.ZP, draw.Src)
+	draw.Draw(img, c.secondaryBarRect(), image.NewUniform(primaryColor), image.ZP, draw.Src)
+	draw.Draw(img, c.primaryBarRect(), image.NewUniform(primaryColor), image.ZP, draw.Src)
 
 	// draw cover image
-	draw.Draw(img, c.coverImgRect(), image.NewUniform(color.RGBA{0xad, 0xff, 0x2f, 0xff}), image.ZP, draw.Src)
+	coverRect := c.coverImgRect()
+	coverSource, err := c.CoverProvider.Load(strconv.FormatInt(int64(imageID), 10)+".tif", coverRect)
+	if err != nil {
+		err = errors.Wrap(err, "c.CoverProvider.Load")
+		return
+	}
+	fmt.Printf("need: w: %v px, h: %v px\ngot: w: %v px, h: %v px\n", coverRect.Dx(), coverRect.Dy(), coverSource.Bounds().Dx(), coverSource.Bounds().Dy())
+	draw.Draw(img, coverRect, coverSource, c.coverPt(coverRect, coverSource.Bounds()), draw.Src)
+	return
+}
+
+// coverPt calc proper cover src point
+func (c *Cover) coverPt(dstRect image.Rectangle, imgRect image.Rectangle) (pt image.Point) {
+	// a wide image should be middle in height
+	if imgRect.Dx()*10/imgRect.Dy() > 15 {
+		pt.X = imgRect.Dx() - dstRect.Dx()
+		pt.Y = (imgRect.Dy() - dstRect.Dy()) / 2
+	} else {
+		pt.X = imgRect.Dx() - dstRect.Dx()
+		pt.Y = imgRect.Dy() - dstRect.Dy()
+	}
 	return
 }
 

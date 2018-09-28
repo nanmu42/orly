@@ -26,12 +26,14 @@ func main() {
 		}
 	}()
 
+	provider := orly.NewImageProvider(orly.LoadTIFFFromFolder("/home/nanmu/文档/orly/coverimage"))
+
 	c := orly.Cover{
-		Width:        500,
-		Height:       700,
-		PrimaryColor: colornames.Red,
+		Width:         500,
+		Height:        700,
+		CoverProvider: provider,
 	}
-	img, err := c.Draw()
+	img, err := c.Draw(colornames.Red, 0)
 	if err != nil {
 		return
 	}
