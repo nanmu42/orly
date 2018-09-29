@@ -13,6 +13,8 @@ import (
 	"log"
 	"os"
 
+	"github.com/pkg/errors"
+
 	"github.com/nanmu42/orly"
 	"golang.org/x/image/colornames"
 )
@@ -27,13 +29,24 @@ func main() {
 	}()
 
 	provider := orly.NewImageProvider(orly.LoadTIFFFromFolder("/home/nanmu/文档/orly/coverimage"))
-
-	c := orly.Cover{
-		Width:         500,
-		Height:        700,
-		CoverProvider: provider,
+	normalFont, err := orly.LoadFont("/home/nanmu/文档/orly/font/SourceHanSans-Normal.ttc")
+	if err != nil {
+		err = errors.Wrap(err, "LoadFont normalFont")
+		return
 	}
-	img, err := c.Draw(colornames.Red, 0)
+	titleFont, err := orly.LoadFont("/home/nanmu/文档/orly/font/SourceHanSerif-Bold.ttc")
+	if err != nil {
+		err = errors.Wrap(err, "LoadFont titleFont")
+		return
+	}
+
+	cf := orly.NewCoverFactory(1000, 1400, provider, titleFont, normalFont)
+	img, err := cf.Draw("思源宋體",
+		"Source Han Sans | 思源黑体 | 思源黑體 | 源ノ角ゴシック | 본고딕",
+		"nanmu42",
+		"思源黑體 | 源ノ角ゴシック | 본고딕",
+		"BR",
+		colornames.Red, 0)
 	if err != nil {
 		return
 	}
