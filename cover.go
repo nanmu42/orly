@@ -35,7 +35,7 @@ const (
 	// PrimaryBarPosPctH Y position of primary min point in milli
 	PrimaryBarPosPctH = 573
 	// SecondaryBarHPct secondaryBar Height in milli
-	SecondaryBarHPct = 16
+	SecondaryBarHPct = 14
 
 	// Denominator for ratio
 	Denominator = 1e3
@@ -43,9 +43,9 @@ const (
 	// fonts
 
 	// TitleSizePctH1 title font size of cover height in milli
-	TitleSizePctH1 = 115
+	TitleSizePctH1 = 105
 	// TitleSizePctH2 title(two lines) font size of cover height in milli
-	TitleSizePctH2 = 60
+	TitleSizePctH2 = 55
 	// TopTextSizePctH TopText font size of cover height in milli
 	TopTextSizePctH = 20
 	// AuthorSizePctH author font size of cover height in milli
@@ -191,12 +191,13 @@ func (c *CoverFactory) Draw(title, topText, author, guideText, guideTextPosition
 		textSize = TitleSizePctH1 * c.height / Denominator
 		lineHeight = textSize * 12 / 10
 		ctx.SetFontSize(float64(textSize))
-		ctx.DrawString(title, freetype.Pt(primaryBarRect.Min.X+outPadding/2, primaryBarRect.Max.Y-outPadding))
+		ctx.DrawString(titleLines[0], freetype.Pt(primaryBarRect.Min.X+outPadding/2, primaryBarRect.Max.Y-outPadding))
 	case 2:
 		textSize = TitleSizePctH2 * c.height / Denominator
 		lineHeight = textSize * 12 / 10
 		ctx.SetFontSize(float64(textSize))
-		ctx.DrawString(title, freetype.Pt(primaryBarRect.Min.X+outPadding/2, primaryBarRect.Max.Y-outPadding))
+		ctx.DrawString(titleLines[1], freetype.Pt(primaryBarRect.Min.X+outPadding/2, primaryBarRect.Max.Y-outPadding))
+		ctx.DrawString(titleLines[0], freetype.Pt(primaryBarRect.Min.X+outPadding/2, primaryBarRect.Max.Y-outPadding-lineHeight))
 	default:
 		textSize = TitleSizePctH1 * c.height / Denominator
 		lineHeight = textSize * 12 / 10
