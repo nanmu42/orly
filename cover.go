@@ -52,6 +52,8 @@ const (
 	AuthorSizePctH = 24
 	// GuideTextPctH GuideText font size of cover height in milli
 	GuideTextPctH = 28
+	// FontORLYPctH ORLY font size of cover height in milli
+	FontORLYPctH = 36
 )
 
 // GuideText Position
@@ -78,10 +80,12 @@ type CoverFactory struct {
 	titleFont *truetype.Font
 	// regularFont
 	regularFont *truetype.Font
+	// font for O RLY?
+	orlyFont *truetype.Font
 }
 
 // NewCoverFactory initialize the cover
-func NewCoverFactory(width, height int, provider *ImageProvider, titleFont, regularFont *truetype.Font) (c *CoverFactory) {
+func NewCoverFactory(width, height int, provider *ImageProvider, titleFont, regularFont, orlyFont *truetype.Font) (c *CoverFactory) {
 	prototype := image.NewRGBA(image.Rectangle{
 		Min: image.ZP,
 		Max: image.Point{width, height},
@@ -89,14 +93,27 @@ func NewCoverFactory(width, height int, provider *ImageProvider, titleFont, regu
 
 	// fill cover with background color(white)
 	draw.Draw(prototype, prototype.Rect, image.White, image.ZP, draw.Src)
+	// draw O RLY?
+	ctx := freetype.NewContext()
+
+	ctx.SetClip(prototype.Rect)
+	ctx.SetDst(prototype)
+
+	ctx.SetHinting(font.HintingNone)
+	ctx.SetSrc(image.Black)
+	ctx.SetFont(orlyFont)
+	ctx.SetFontSize(float64(FontORLYPctH * height / Denominator))
+	var outPadding = PaddingPctH * height / Denominator
+	ctx.DrawString("O RLY?", freetype.Pt(outPadding, height-outPadding))
 
 	return &CoverFactory{
 		width:          width,
 		height:         height,
 		CoverProvider:  provider,
-		regularFont:    regularFont,
-		titleFont:      titleFont,
 		CoverPrototype: prototype,
+		titleFont:      titleFont,
+		regularFont:    regularFont,
+		orlyFont:       orlyFont,
 	}
 }
 

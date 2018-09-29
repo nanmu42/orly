@@ -29,7 +29,7 @@ func main() {
 	}()
 
 	provider := orly.NewImageProvider(orly.LoadTIFFFromFolder("/home/nanmu/文档/orly/coverimage"))
-	normalFont, err := orly.LoadFont("/home/nanmu/文档/orly/font/SourceHanSans-Normal.ttc")
+	normalFont, err := orly.LoadFont("/home/nanmu/文档/orly/font/SourceHanSans-Medium.ttc")
 	if err != nil {
 		err = errors.Wrap(err, "LoadFont normalFont")
 		return
@@ -39,8 +39,13 @@ func main() {
 		err = errors.Wrap(err, "LoadFont titleFont")
 		return
 	}
+	orlyFont, err := orly.LoadFont("/home/nanmu/文档/orly/font/SourceHanSans-Heavy.ttc")
+	if err != nil {
+		err = errors.Wrap(err, "LoadFont orlyFont")
+		return
+	}
 
-	cf := orly.NewCoverFactory(1000, 1400, provider, titleFont, normalFont)
+	cf := orly.NewCoverFactory(1000, 1400, provider, titleFont, normalFont, orlyFont)
 	img, err := cf.Draw("思源宋體",
 		"Source Han Sans | 思源黑体 | 思源黑體 | 源ノ角ゴシック | 본고딕",
 		"nanmu42",
