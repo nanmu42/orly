@@ -66,8 +66,6 @@ const (
 
 // CoverFactory O RLY cover factory
 type CoverFactory struct {
-	// TODO: add press name and press icon
-
 	width  int
 	height int
 
@@ -115,6 +113,19 @@ func NewCoverFactory(width, height int, provider *ImageProvider, titleFont, regu
 		regularFont:    regularFont,
 		orlyFont:       orlyFont,
 	}
+}
+
+// PreheatCache loads cover image into cache
+func (c *CoverFactory) PreheatCache(maxImageID int) (err error) {
+	coverRect := c.coverImgRect()
+	for i := 0; i <= maxImageID; i++ {
+		_, err = c.CoverProvider.Load(strconv.FormatInt(int64(i), 10)+".tif", coverRect)
+		if err != nil {
+			err = errors.Wrap(err, "CoverProvider.Load")
+			return
+		}
+	}
+	return
 }
 
 // Draw outputs the cover in image

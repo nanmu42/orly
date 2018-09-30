@@ -35,6 +35,8 @@ type ImageProvider struct {
 	// originImgLoader if image does not exist,
 	// provider calls this func to get original image for resize.
 	originImgLoader func(fileName string) (image.Image, error)
+	// miss record cache miss num
+	miss uint64
 }
 
 // NewImageProvider factory of ImageProvider
@@ -43,6 +45,7 @@ func NewImageProvider(Loader func(fileName string) (image.Image, error)) *ImageP
 		cache:           NewImageCache(),
 		loadLock:        newLoadLock(),
 		originImgLoader: Loader,
+		miss:            0,
 	}
 }
 
@@ -55,7 +58,7 @@ func (i *ImageProvider) Load(fileName string, size image.Rectangle) (img image.I
 		return
 	}
 	// needs load from file system
-
+	atomic.AddUint64(&i.miss, 1)
 	// is loading?
 	if i.loadLock.Lock(key) {
 		err = errors.Errorf("%s is already under loading", key)
@@ -77,6 +80,11 @@ func (i *ImageProvider) Load(fileName string, size image.Rectangle) (img image.I
 	i.cache.Store(key, rgba)
 	img = rgba
 	return
+}
+
+// Miss report the num of cache miss
+func (i *ImageProvider) Miss() uint64 {
+	return atomic.LoadUint64(&i.miss)
 }
 
 // LoadTIFFFromFolder func factory
