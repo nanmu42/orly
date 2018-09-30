@@ -13,6 +13,7 @@
 *.dll
 *.so
 *.dylib
+/cmd/rly/rly
 
 # image assets and outputs
 *.png
@@ -23,3 +24,6 @@
 # fonts
 *.ttc
 *.ttf
+
+# config file
+/cmd/rly/config.toml

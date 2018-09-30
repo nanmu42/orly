@@ -1,3 +1,5 @@
+// +build ignore
+
 /*
  * Copyright (c) 2018 LI Zhennan
  *
@@ -5,8 +7,6 @@
  * You may find a license copy in project root.
  *
  */
-
-// +build genconfig
 
 package main
 

@@ -25,8 +25,14 @@ var (
 
 // Setting is where config lies
 type Setting struct {
+	// port string for gin like
+	Port string
+	// verbose mode
+	Debug bool
 	// directory of cover image source file(*.tif)
 	CoverImageDir string
+	// for preheat
+	MaxImageID int
 	// path of fonts
 	NormalFont string
 	TitleFont  string

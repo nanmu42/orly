@@ -3,6 +3,9 @@
 # cp config_example.toml config.toml
 
 CoverImageDir = ""
+Debug = false
+MaxImageID = 0
 NormalFont = ""
 ORLYFont = ""
+Port = ""
 TitleFont = ""
