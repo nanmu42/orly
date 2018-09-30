@@ -1,0 +1,8 @@
+# Copy this file to create default config
+#
+# cp config_example.toml config.toml
+
+CoverImageDir = ""
+NormalFont = ""
+ORLYFont = ""
+TitleFont = ""
