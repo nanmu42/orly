@@ -28,18 +28,18 @@ func main() {
 		}
 	}()
 
-	provider := orly.NewImageProvider(orly.LoadTIFFFromFolder("/home/nanmu/文档/orly/coverimage"))
-	normalFont, err := orly.LoadFont("/home/nanmu/文档/orly/font/SourceHanSans-Medium.ttc")
+	provider := orly.NewImageProvider(orly.LoadTIFFFromFolder("../../coverimage"))
+	normalFont, err := orly.LoadFont("../../font/SourceHanSans-Medium.ttc")
 	if err != nil {
 		err = errors.Wrap(err, "LoadFont normalFont")
 		return
 	}
-	titleFont, err := orly.LoadFont("/home/nanmu/文档/orly/font/SourceHanSerif-Bold.ttc")
+	titleFont, err := orly.LoadFont("../../font/SourceHanSerif-Bold.ttc")
 	if err != nil {
 		err = errors.Wrap(err, "LoadFont titleFont")
 		return
 	}
-	orlyFont, err := orly.LoadFont("/home/nanmu/文档/orly/font/SourceHanSans-Heavy.ttc")
+	orlyFont, err := orly.LoadFont("../../font/SourceHanSans-Heavy.ttc")
 	if err != nil {
 		err = errors.Wrap(err, "LoadFont orlyFont")
 		return
