@@ -78,7 +78,7 @@ type CoverFactory struct {
 	titleFont *truetype.Font
 	// regularFont
 	regularFont *truetype.Font
-	// font for O RLY?
+	// font for O'RLY?
 	orlyFont *truetype.Font
 }
 
@@ -102,7 +102,7 @@ func NewCoverFactory(width, height int, provider *ImageProvider, titleFont, regu
 	ctx.SetFont(orlyFont)
 	ctx.SetFontSize(float64(FontORLYPctH * height / Denominator))
 	var outPadding = PaddingPctH * height / Denominator
-	ctx.DrawString("O RLY?", freetype.Pt(outPadding, height-outPadding))
+	ctx.DrawString("O'RLY?", freetype.Pt(outPadding, height-outPadding))
 
 	return &CoverFactory{
 		width:          width,
