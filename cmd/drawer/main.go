@@ -9,7 +9,7 @@
 package main
 
 import (
-	"image/png"
+	"image/gif"
 	"log"
 	"os"
 
@@ -56,13 +56,13 @@ func main() {
 		return
 	}
 
-	f, err := os.Create("out.png")
+	f, err := os.Create("out.gif")
 	if err != nil {
 		return
 	}
 	defer f.Close()
 
-	if err := png.Encode(f, img); err != nil {
+	if err := gif.Encode(f, img, nil); err != nil {
 		return
 	}
 }

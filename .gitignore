@@ -18,6 +18,7 @@
 *.png
 *.jpg
 *.tif
+*.gif
 
 # fonts
 *.ttc
