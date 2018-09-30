@@ -11,7 +11,7 @@ package main
 import (
 	"bytes"
 	"context"
-	"image/gif"
+	"image/jpeg"
 	"log"
 	"net/http"
 	"os"
@@ -42,7 +42,7 @@ func GenerateCover(c *gin.Context) {
 	}
 
 	var output bytes.Buffer
-	err = gif.Encode(&output, img, nil)
+	err = jpeg.Encode(&output, img, &jpeg.Options{85})
 	if err != nil {
 		c.String(http.StatusInternalServerError, "%v", err)
 		return
@@ -50,7 +50,7 @@ func GenerateCover(c *gin.Context) {
 
 	// set cache control
 	c.Header("Cache-Control", "public, max-age=86400")
-	c.Data(http.StatusOK, "image/gif", output.Bytes())
+	c.Data(http.StatusOK, "image/jpeg", output.Bytes())
 }
 
 func setupRouter() (router *gin.Engine) {
