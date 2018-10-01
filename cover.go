@@ -151,7 +151,6 @@ func (c *CoverFactory) Draw(title, topText, author, guideText, guideTextPosition
 		err = errors.Wrap(err, "c.CoverProvider.Load")
 		return
 	}
-	// fmt.Printf("need: w: %v px, h: %v px\ngot: w: %v px, h: %v px\n", coverRect.Dx(), coverRect.Dy(), coverSource.Bounds().Dx(), coverSource.Bounds().Dy())
 	draw.Draw(img, coverRect, coverSource, c.coverPt(coverRect, coverSource.Bounds()), draw.Src)
 
 	// prepare to draw letters

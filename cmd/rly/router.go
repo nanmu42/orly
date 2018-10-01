@@ -49,20 +49,23 @@ func GenerateCover(c *gin.Context) {
 	}
 
 	// set cache control
-	c.Header("Cache-Control", "public, max-age=86400")
-	c.Data(http.StatusOK, "image/jpeg", output.Bytes())
+	c.DataFromReader(http.StatusOK, int64((&output).Len()), "image/jpeg", &output, map[string]string{
+		"Cache-Control": "public, max-age=86400",
+	})
 }
 
 func setupRouter() (router *gin.Engine) {
+	if C.Debug {
+		gin.SetMode(gin.DebugMode)
+	} else {
+		gin.SetMode(gin.ReleaseMode)
+	}
 	router = gin.New()
 	router.HandleMethodNotAllowed = true
 	router.Use(gin.Recovery())
 	// set debug mode if in need
 	if C.Debug {
-		gin.SetMode(gin.DebugMode)
 		router.Use(gin.Logger())
-	} else {
-		gin.SetMode(gin.ReleaseMode)
 	}
 
 	// setup routes
@@ -91,6 +94,7 @@ func startAPI(handler http.Handler, port string) {
 
 	go func() {
 		// service connections
+		log.Println("API starting...")
 		if err := server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
 			log.Fatalf("API HTTP Service: %v\n", err)
 		}
