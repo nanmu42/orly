@@ -8,4 +8,6 @@ MaxImageID = 0
 NormalFont = ""
 ORLYFont = ""
 Port = ""
+QueueLen = 10
 TitleFont = ""
+WorkerNum = 4

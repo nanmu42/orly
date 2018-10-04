@@ -32,26 +32,41 @@ func GenerateCover(c *gin.Context) {
 		return
 	}
 
-	if cq.ImageID > int64(C.MaxImageID) || cq.ImageID < 0 {
-		cq.ImageID = 0
-	}
-	img, err := factory.Draw(short(cq.Title, 42), short(cq.TopText, 60), short(cq.Author, 36), short(cq.GuideText, 40), cq.GuideTextPlacement, cq.PrimaryColor, int(cq.ImageID))
-	if err != nil {
-		c.String(http.StatusInternalServerError, "%v", err)
-		return
-	}
-
-	var output bytes.Buffer
-	err = jpeg.Encode(&output, img, &jpeg.Options{85})
+	output, err := w.Handle(&cq)
 	if err != nil {
 		c.String(http.StatusInternalServerError, "%v", err)
 		return
 	}
 
 	// set cache control
-	c.DataFromReader(http.StatusOK, int64((&output).Len()), "image/jpeg", &output, map[string]string{
+	c.DataFromReader(http.StatusOK, int64(output.Len()), "image/jpeg", output, map[string]string{
 		"Cache-Control": "public, max-age=86400",
 	})
+}
+
+func makeCover(t *Task) {
+	var (
+		output bytes.Buffer
+		err    error
+	)
+	defer func() {
+		t.ResultSlot <- &TaskResult{
+			EncodedImg: &output,
+			Err:        err,
+		}
+	}()
+
+	if t.Query.ImageID > int64(C.MaxImageID) || t.Query.ImageID < 0 {
+		t.Query.ImageID = 0
+	}
+	img, err := factory.Draw(short(t.Query.Title, 42), short(t.Query.TopText, 60), short(t.Query.Author, 36), short(t.Query.GuideText, 40), t.Query.GuideTextPlacement, t.Query.PrimaryColor, int(t.Query.ImageID))
+	if err != nil {
+		return
+	}
+
+	err = jpeg.Encode(&output, img, &jpeg.Options{85})
+
+	return
 }
 
 func setupRouter() (router *gin.Engine) {

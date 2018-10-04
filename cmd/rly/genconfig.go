@@ -26,6 +26,9 @@ func main() {
 		}
 	}()
 
+	C.QueueLen = 10
+	C.WorkerNum = 4
+
 	content, err := C.Info()
 	if err != nil {
 		err = errors.Wrap(err, "C.Info")

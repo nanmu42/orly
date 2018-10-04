@@ -18,6 +18,7 @@ import (
 
 var (
 	configFile = flag.String("config", "config.toml", "config.toml file location for rly")
+	w          WorkerPool
 )
 
 func main() {
@@ -41,6 +42,8 @@ func main() {
 		err = errors.Wrap(err, "initializeFactory")
 		return
 	}
+
+	w = InitWorkerPool(C.WorkerNum, C.QueueLen, makeCover)
 
 	router := setupRouter()
 	startAPI(router, C.Port)

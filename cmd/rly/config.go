@@ -28,7 +28,9 @@ type Setting struct {
 	// port string for gin like
 	Port string
 	// verbose mode
-	Debug bool
+	Debug     bool
+	WorkerNum int
+	QueueLen  int
 	// directory of cover image source file(*.tif)
 	CoverImageDir string
 	// for preheat
