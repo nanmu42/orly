@@ -11,6 +11,7 @@ package main
 import (
 	"bytes"
 	"context"
+	"fmt"
 	"image/jpeg"
 	"net/http"
 	"os"
@@ -110,8 +111,10 @@ func startAPI(handler http.Handler, port string) {
 
 	go func() {
 		// service connections
+		fmt.Println("API starting...")
 		logger.Info("API starting...")
 		if err := server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
+			fmt.Printf("API HTTP service: %v", err)
 			logger.Fatal("API HTTP service fatal error",
 				zap.Error(err),
 			)
@@ -123,16 +126,19 @@ func startAPI(handler http.Handler, port string) {
 	quit := make(chan os.Signal, 1)
 	signal.Notify(quit, exitSignals...)
 	<-quit
+	fmt.Println("API is exiting safely...")
 	logger.Info("API is exiting safely...")
 
 	ctx, cancel := context.WithTimeout(context.Background(), shutdownTimeout)
 	defer cancel()
 	if err := server.Shutdown(ctx); err != nil {
-		logger.Fatal("API exiting timed out:",
+		fmt.Println("API exiting timed out:", err)
+		logger.Fatal("API exiting timed out",
 			zap.Error(err),
 		)
 	}
 	logger.Info("API exited successfully. :)")
+	fmt.Println("API exited successfully. :)")
 
 	return
 }

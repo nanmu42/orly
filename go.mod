@@ -14,6 +14,10 @@ require (
 	github.com/stretchr/objx v0.1.1 // indirect
 	github.com/stretchr/testify v1.2.2
 	github.com/ugorji/go/codec v0.0.0-20180927125128-99ea80c8b19a // indirect
+	go.uber.org/atomic v1.3.2 // indirect
+	go.uber.org/multierr v1.1.0 // indirect
+	go.uber.org/zap v1.9.1
 	golang.org/x/image v0.0.0-20180708004352-c73c2afc3b81
 	gopkg.in/go-playground/validator.v8 v8.18.2 // indirect
+	gopkg.in/natefinch/lumberjack.v2 v2.0.0
 )

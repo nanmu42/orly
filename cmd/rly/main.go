@@ -12,6 +12,9 @@ package main
 import (
 	"flag"
 
+	"go.uber.org/zap/zapcore"
+	"gopkg.in/natefinch/lumberjack.v2"
+
 	"go.uber.org/zap"
 
 	"github.com/pkg/errors"
@@ -23,11 +26,24 @@ var (
 	logger     *zap.Logger
 )
 
+func init() {
+	w := NewBufferedLumberjack(&lumberjack.Logger{
+		Filename:   "rly.log",
+		MaxSize:    300, // megabytes
+		MaxBackups: 5,
+		MaxAge:     28, // days
+	}, 256*1024)
+	core := zapcore.NewCore(
+		zapcore.NewJSONEncoder(zap.NewProductionEncoderConfig()),
+		w,
+		zap.InfoLevel,
+	)
+	logger = zap.New(core)
+}
+
 func main() {
 	var err error
-	logger, _ = zap.NewProduction()
 	defer logger.Sync()
-
 	defer func() {
 		if err != nil {
 			logger.Fatal("fatal error",
