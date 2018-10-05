@@ -35,7 +35,7 @@ func init() {
 	}, 256*1024)
 	core := zapcore.NewCore(
 		zapcore.NewJSONEncoder(zap.NewProductionEncoderConfig()),
-		w,
+		zapcore.Lock(w),
 		zap.InfoLevel,
 	)
 	logger = zap.New(core)

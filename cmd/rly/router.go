@@ -30,12 +30,14 @@ func GenerateCover(c *gin.Context) {
 
 	cq, err := ParseCoverQuery(c.Request.URL.Query())
 	if err != nil {
+		c.Error(err)
 		c.String(http.StatusBadRequest, "%v", err)
 		return
 	}
 
 	output, err := w.Handle(&cq)
 	if err != nil {
+		c.Error(err)
 		c.String(http.StatusInternalServerError, "%v", err)
 		return
 	}
@@ -84,6 +86,8 @@ func setupRouter() (router *gin.Engine) {
 	if C.Debug {
 		router.Use(gin.Logger())
 	}
+	// log requests
+	router.Use(RequestLogger(logger))
 
 	// setup routes
 	router.GET("/generate", GenerateCover)
@@ -141,4 +145,23 @@ func startAPI(handler http.Handler, port string) {
 	fmt.Println("API exited successfully. :)")
 
 	return
+}
+
+// RequestLogger logs every request via zap
+func RequestLogger(l *zap.Logger) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		receivedAt := time.Now()
+		// before
+		c.Next()
+		// after
+		l.Info(c.Request.Method,
+			zap.Int("status", c.Writer.Status()),
+			zap.String("URL", c.Request.RequestURI),
+			zap.String("IP", c.ClientIP()),
+			zap.String("UA", c.Request.UserAgent()),
+			zap.String("ref", c.Request.Referer()),
+			zap.Duration("lapse", time.Now().Sub(receivedAt)),
+			zap.Strings("err", c.Errors.Errors()),
+		)
+	}
 }
