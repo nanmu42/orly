@@ -11,7 +11,8 @@ package main
 
 import (
 	"flag"
-	"log"
+
+	"go.uber.org/zap"
 
 	"github.com/pkg/errors"
 )
@@ -19,13 +20,19 @@ import (
 var (
 	configFile = flag.String("config", "config.toml", "config.toml file location for rly")
 	w          WorkerPool
+	logger     *zap.Logger
 )
 
 func main() {
 	var err error
+	logger, _ = zap.NewProduction()
+	defer logger.Sync()
+
 	defer func() {
 		if err != nil {
-			log.Fatal(err)
+			logger.Fatal("fatal error",
+				zap.Error(err),
+			)
 		}
 	}()
 

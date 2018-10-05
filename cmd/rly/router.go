@@ -12,12 +12,13 @@ import (
 	"bytes"
 	"context"
 	"image/jpeg"
-	"log"
 	"net/http"
 	"os"
 	"os/signal"
 	"syscall"
 	"time"
+
+	"go.uber.org/zap"
 
 	"github.com/gin-gonic/gin"
 )
@@ -109,9 +110,11 @@ func startAPI(handler http.Handler, port string) {
 
 	go func() {
 		// service connections
-		log.Println("API starting...")
+		logger.Info("API starting...")
 		if err := server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
-			log.Fatalf("API HTTP Service: %v\n", err)
+			logger.Fatal("API HTTP service fatal error",
+				zap.Error(err),
+			)
 		}
 	}()
 
@@ -120,14 +123,16 @@ func startAPI(handler http.Handler, port string) {
 	quit := make(chan os.Signal, 1)
 	signal.Notify(quit, exitSignals...)
 	<-quit
-	log.Println("API is exiting safely...")
+	logger.Info("API is exiting safely...")
 
 	ctx, cancel := context.WithTimeout(context.Background(), shutdownTimeout)
 	defer cancel()
 	if err := server.Shutdown(ctx); err != nil {
-		log.Fatal("API exiting timed out:", err)
+		logger.Fatal("API exiting timed out:",
+			zap.Error(err),
+		)
 	}
-	log.Println("API exited successfully. :)")
+	logger.Info("API exited successfully. :)")
 
 	return
 }
