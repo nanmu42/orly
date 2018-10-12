@@ -19,10 +19,14 @@
 /cmd/rly/rly
 
 # image assets and outputs
-*.png
-*.jpg
-*.tif
-*.gif
+/cmd/**/*.png
+/cmd/**/*.jpg
+/cmd/**/*.tif
+/cmd/**/*.gif
+/coverimage/*.png
+/coverimage/*.jpg
+/coverimage/*.tif
+/coverimage/*.gif
 
 # fonts
 *.ttc
