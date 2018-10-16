@@ -23,10 +23,10 @@
 /cmd/**/*.jpg
 /cmd/**/*.tif
 /cmd/**/*.gif
-/coverimage/*.png
-/coverimage/*.jpg
-/coverimage/*.tif
-/coverimage/*.gif
+/coverimage/**/*.png
+/coverimage/**/*.jpg
+/coverimage/**/*.tif
+/coverimage/**/*.gif
 
 # fonts
 *.ttc
