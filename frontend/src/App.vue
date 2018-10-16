@@ -49,7 +49,7 @@
 
 <style>
   body {
-    background-color: #fafafa;
+    background-color: #fefefe;
   }
   h1 {
     display: block;
