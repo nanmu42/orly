@@ -36,6 +36,6 @@
   }
   .colors {
     max-width: 85%;
-    margin: 50px 0;
+    margin: 50px 0 0 0;
   }
 </style>

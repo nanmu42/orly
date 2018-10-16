@@ -7,7 +7,7 @@
   -->
 
 <template>
-  <form class="inputer">
+  <form class="inputer" autocomplete="off">
     <label for="title">Title</label>
     <input id="title" name="title" placeholder="required">
 
@@ -29,7 +29,7 @@
     <input id="top_text" name="top_text" placeholder="required">
 
     <label for="animal_code">Animal Code</label>
-    <input id="animal_code" name="animal_code" placeholder="1-40 (listed below, defaults to random)">
+    <input id="animal_code" name="animal_code" placeholder="0-40 (listed below, defaults to random)">
 
     <label for="color_code">Color Code</label>
     <input id="color_code" name="color_code" placeholder="0-16 (listed below, defaults to random)">

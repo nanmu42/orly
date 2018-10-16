@@ -7,7 +7,7 @@
   -->
 
 <template>
-  <div>
+  <div class="thumbnails">
     <h2>Animal Codes</h2>
     <div class="animal"><img src="../assets/thumbnails/0.tif.gif" alt="0"/>0</div>
     <div class="animal"><img src="../assets/thumbnails/1.tif.gif" alt="1"/>1</div>
@@ -69,5 +69,10 @@
     display: inline-block;
     font-size: 1.2em;
     margin: 40px 22px;
+  }
+
+  .thumbnails {
+    max-width: 92%;
+    margin: 50px 0 0 0;
   }
 </style>

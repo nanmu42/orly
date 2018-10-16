@@ -59,7 +59,7 @@
   }
   h1 {
     display: block;
-    font-size: 2em;
+    font-size: 2.2em;
     margin: 2em 0 1em 0;
     font-weight: bold;
   }
