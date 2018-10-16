@@ -20,10 +20,4 @@
 </script>
 
 <style scoped>
-  h1 {
-    display: block;
-    font-size: 2em;
-    margin: 0.67em 0;
-    font-weight: bold;
-  }
 </style>
