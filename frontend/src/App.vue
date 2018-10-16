@@ -3,6 +3,7 @@
     <TitleBar class="w100" title-msg="O'RLY Cover Generator"/>
     <Inputer class="w50" />
     <Result class="w50 gap" />
+    <Thumbnails class="w100"/>
     <Colors class="w100" v-bind:colors="colors"/>
   </div>
 </template>
@@ -12,10 +13,12 @@
   import Inputer from "./components/Inputer"
   import Result from "./components/Result"
   import Colors from "./components/Colors"
+  import Thumbnails from "./components/thumbnails"
 
   export default {
     name: 'app',
     components: {
+      Thumbnails,
       Colors,
       Result,
       Inputer,
@@ -41,9 +44,12 @@
           "#bd002e",
           "#009d1a",
           "#75a500",
-        ]
+        ],
       }
     },
+    methods: {
+
+    }
   }
 </script>
 
