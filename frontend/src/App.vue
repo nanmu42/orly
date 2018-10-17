@@ -5,7 +5,8 @@
     <Result class="w50 gap" />
     <Thumbnails class="w100"/>
     <Colors class="w100" v-bind:colors="colors"/>
-    <Footer/>
+    <paperwork class="w100"/>
+    <Footer class="w100"/>
   </div>
 </template>
 
@@ -16,10 +17,12 @@
   import Colors from "./components/Colors"
   import Thumbnails from "./components/thumbnails"
   import Footer from "./components/Footer"
+  import Paperwork from "./components/Paperwork"
 
   export default {
     name: 'app',
     components: {
+      Paperwork,
       Footer,
       Thumbnails,
       Colors,
@@ -58,6 +61,7 @@
 
 <style>
   body {
+    margin: 0;
     background-color: #fefefe;
   }
   h1 {
