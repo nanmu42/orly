@@ -32,7 +32,6 @@
     display: inline-block;
     font-size: 30px;
     line-height: 90px;
-    background-color: dimgrey;
   }
   .colors {
     max-width: 85%;
