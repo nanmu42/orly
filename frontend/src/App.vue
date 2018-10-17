@@ -122,6 +122,6 @@
   }
 
   .w50 {
-    flex: 1 0 auto;
+    flex: 0 0 auto;
   }
 </style>

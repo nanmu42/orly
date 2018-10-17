@@ -83,14 +83,13 @@
 
 <style scoped>
   form {
-    max-width: 500px;
-    min-width: 400px;
+    width: 500px;
   }
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 400px) {
     form {
       max-width: 96%;
-      min-width: auto;
+      width: auto;
     }
   }
 

@@ -48,25 +48,21 @@
 
 <style scoped>
   .result {
-    max-width: 400px;
+    width: 400px;
   }
-  @media screen and (max-width: 400px) {
-    .result {
-      max-width: 96%;
-    }
-  }
-  @media screen and (min-width: 1000px) {
-    .result {
-      margin: 0
-    }
-  }
-  @media screen and (min-width: 900px) {
+  @media screen and (min-width: 970px) {
     .result {
       margin: 0 0 0 50px;
     }
   }
-  @media screen and (max-width: 835px) {
+  @media screen and (max-width: 970px) {
     .result {
+      margin: 30px 50px 0 50px;
+    }
+  }
+  @media screen and (max-width: 401px) {
+    .result {
+      max-width: 96%;
       margin: 30px 0 0 0;
     }
   }
