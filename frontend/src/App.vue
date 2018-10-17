@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <TitleBar class="w100" title-msg="O'RLY Cover Generator"/>
-    <Inputer class="w50" />
-    <Result class="w50 gap" />
+    <Inputer class="w50" v-on:input-submit="handleSubmit"/>
+    <Result class="w50 gap" v-bind:input-src="imgSrc"/>
     <Thumbnails class="w100"/>
     <Colors class="w100" v-bind:colors="colors"/>
     <paperwork class="w100"/>
@@ -51,10 +51,33 @@
           "#009d1a",
           "#75a500",
         ],
+        imgSrc: process.env.BASE_URL + "example.gif",
       }
     },
     methods: {
+      handleSubmit: function (input) {
+        console.log(input.colorCode)
+        console.log(input.animalCode)
+        let color, coverID
+        if (input.colorCode !== "" && input.colorCode >= 0 && input.colorCode < this.colors.length) {
+          color = this.colors[input.colorCode].substring(1)
+        } else {
+          color = this.colors[Math.floor(Math.random() * (this.colors.length - 1))].substring(1)
+        }
+        if (input.animalCode !== "" && input.animalCode >= 0 && input.animalCode <= 40) {
+          coverID = input.animalCode
+        } else {
+          coverID = Math.floor(Math.random() * 40)
+        }
 
+        let rawRequest = "/generate?g_loc=LR&g_text=" + input.guideText +
+          "&color=" + color +
+          "&img_id=" + coverID +
+          "&author=" + input.author +
+          "&top_text=" + input.topText +
+          "&title=" + input.title
+        this.imgSrc = encodeURI(rawRequest)
+      }
     }
   }
 </script>
@@ -64,18 +87,21 @@
     margin: 0;
     background-color: #fefefe;
   }
+
   h1 {
     display: block;
     font-size: 2.2em;
     margin: 2em 0 1em 0;
     font-weight: bold;
   }
+
   h2 {
     display: block;
     font-size: 1.6em;
     margin: 1.6em 0 1em 0;
     font-weight: bold;
   }
+
   #app {
     box-sizing: border-box;
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -84,15 +110,18 @@
     flex-wrap: wrap;
     justify-content: center;
   }
+
   #app * {
     box-sizing: inherit;
     font-family: inherit;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+
   .w100 {
     flex: 0 0 100%;
   }
+
   .w50 {
     flex: 1 0 auto;
   }

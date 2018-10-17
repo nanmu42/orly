@@ -8,14 +8,42 @@
 
 <template>
   <div class="result">
-    <img src="../assets/example.gif" alt="O'RLY? Book Cover Example">
-    <button>Download</button>
+    <progressive-img
+      class="img"
+      :blur="3"
+      :src="imgSrc"
+      :placeholder="baseURL + 'example.gif'"
+      :fallback="baseURL + 'error.gif'"
+      alt="Your O'RLY Book Cover"
+    ></progressive-img>
+    <a :href="imgSrc" target="_blank" download>Download</a>
   </div>
 </template>
 
 <script>
   export default {
-    name: "Result"
+    name: "Result",
+    props: {
+      inputSrc: String,
+    },
+    beforeMount: function() {
+      this.imgSrc = this.inputSrc
+    },
+    data: function () {
+      return {
+        baseURL: process.env.BASE_URL,
+        imgSrc: "",
+      }
+    },
+    watch: {
+      inputSrc: function (newVal) {
+        if (newVal === this.imgSrc) {
+          return
+        }
+        console.log(newVal)
+        this.imgSrc = newVal
+      }
+    },
   }
 </script>
 
@@ -43,13 +71,16 @@
       margin: 30px 0 0 0;
     }
   }
-  img, button {
+  .img, img, a {
     -webkit-appearance: none;
     outline: none;
     display: block;
     width: 100%;
   }
-  button {
+  .img div {
+    width: 100%;
+  }
+  a {
     white-space: nowrap;
     margin: 20px 0 0 0;
     font-size: 1.2em;
@@ -58,13 +89,14 @@
     color: white;
     border: none;
     font-weight: bold;
+    text-decoration: none;
   }
-  button:active {
+  a:active {
     background: white;
     color: black;
     box-shadow: 0 0 0 2px black inset;
   }
-  img {
+  .img {
     box-shadow: 8px 8px 30px black;
   }
 

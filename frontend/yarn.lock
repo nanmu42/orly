@@ -7590,6 +7590,11 @@ vue-loader@^15.4.2:
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
 
+vue-progressive-image@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/vue-progressive-image/-/vue-progressive-image-3.1.0.tgz#4f0257701d0c7bb816e7054c2fe7e49e48f1c3fc"
+  integrity sha512-Gs3NYAu8RCdY/YDvYNJ/ku5fjgzRO4FESE51ne9JaFzOkOrsXnGBZC4reJ4ingSkH9Gyxwt2Ru05oFqH2JlmcQ==
+
 vue-style-loader@^4.1.0:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/vue-style-loader/-/vue-style-loader-4.1.2.tgz#dedf349806f25ceb4e64f3ad7c0a44fba735fcf8"
