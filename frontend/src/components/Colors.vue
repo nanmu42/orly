@@ -9,7 +9,7 @@
 <template>
 <div class="colors">
   <h2>Color Codes</h2>
-  <span v-for="(color, index) of colors" v-bind:style="{background: color}">{{index}}</span>
+  <span v-for="(color, index) of colors" v-bind:style="{background: color}" v-bind:key="index">{{index}}</span>
 </div>
 </template>
 

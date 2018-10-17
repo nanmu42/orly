@@ -62,7 +62,7 @@
       }
     },
     methods: {
-      onSubmit: function (e) {
+      onSubmit: function () {
         let self = this
         this.disableSubmit()
         setTimeout(self.enableSubmit, 2000)
