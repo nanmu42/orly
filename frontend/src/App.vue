@@ -5,6 +5,7 @@
     <Result class="w50 gap" />
     <Thumbnails class="w100"/>
     <Colors class="w100" v-bind:colors="colors"/>
+    <Footer/>
   </div>
 </template>
 
@@ -14,10 +15,12 @@
   import Result from "./components/Result"
   import Colors from "./components/Colors"
   import Thumbnails from "./components/thumbnails"
+  import Footer from "./components/Footer"
 
   export default {
     name: 'app',
     components: {
+      Footer,
       Thumbnails,
       Colors,
       Result,
