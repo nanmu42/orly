@@ -16,6 +16,7 @@ import (
 	"net/http"
 	"os"
 	"os/signal"
+	"sync/atomic"
 	"syscall"
 	"time"
 
@@ -23,6 +24,10 @@ import (
 
 	"github.com/gin-gonic/gin"
 )
+
+// requestCounter is used to count request num
+// should only be affected by atomic action
+var requestCounter uint64
 
 // GenerateCover generate cover and returns it in gif format
 func GenerateCover(c *gin.Context) {
@@ -150,7 +155,11 @@ func startAPI(handler http.Handler, port string) {
 // RequestLogger logs every request via zap
 func RequestLogger(l *zap.Logger) gin.HandlerFunc {
 	return func(c *gin.Context) {
+		// request timer
 		receivedAt := time.Now()
+		// counter++
+		sequense := atomic.AddUint64(&requestCounter, 1)
+
 		// before
 		c.Next()
 		// after
@@ -159,6 +168,7 @@ func RequestLogger(l *zap.Logger) gin.HandlerFunc {
 			var ok bool
 			if cq, ok = payload.(*CoverQuery); ok && cq != nil {
 				l.Info(c.Request.Method,
+					zap.Uint64("seq", sequense),
 					zap.Int("status", c.Writer.Status()),
 					zap.String("title", cq.Title),
 					zap.String("author", cq.Author),
@@ -176,6 +186,7 @@ func RequestLogger(l *zap.Logger) gin.HandlerFunc {
 			}
 		}
 		l.Info(c.Request.Method,
+			zap.Uint64("seq", sequense),
 			zap.Int("status", c.Writer.Status()),
 			zap.String("URL", c.Request.RequestURI),
 			zap.String("IP", c.ClientIP()),

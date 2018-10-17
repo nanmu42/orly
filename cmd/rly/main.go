@@ -25,8 +25,10 @@ var (
 	configFile = flag.String("config", "config.toml", "config.toml file location for rly")
 	w          WorkerPool
 	logger     *zap.Logger
-	// build params
-	Version, BuildDate string
+	// Version build params
+	Version string
+	// BuildDate build params
+	BuildDate string
 )
 
 func init() {
