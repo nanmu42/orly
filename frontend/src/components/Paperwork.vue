@@ -14,7 +14,7 @@
 
       This work uses Source Han Serif and Source Han Sans from Adobe and Google,
       with participation from partner foundries Changzhou SinoType in China,
-      Sandoll Communications in Korea, and Iwata Corporation in Japan.
+      Iwata Corporation in Japan, and Sandoll Communications in Korea.
 
       The animal images are from the <a href="https://etc.usf.edu/clipart/" target="_blank">USF ClipArt ETC</a> project.
     </p>
