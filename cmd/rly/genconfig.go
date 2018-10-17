@@ -28,6 +28,7 @@ func main() {
 
 	C.QueueLen = 10
 	C.WorkerNum = 4
+	C.Width = 800
 
 	content, err := C.Info()
 	if err != nil {

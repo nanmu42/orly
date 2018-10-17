@@ -42,10 +42,10 @@ func GenerateCover(c *gin.Context) {
 		return
 	}
 
+	c.Set("cq", &cq)
+
 	// set cache control
-	c.DataFromReader(http.StatusOK, int64(output.Len()), "image/jpeg", output, map[string]string{
-		"Cache-Control": "public, max-age=86400",
-	})
+	c.DataFromReader(http.StatusOK, int64(output.Len()), "image/jpeg", output, map[string]string{})
 }
 
 func makeCover(t *Task) {
@@ -154,6 +154,27 @@ func RequestLogger(l *zap.Logger) gin.HandlerFunc {
 		// before
 		c.Next()
 		// after
+		var cq *CoverQuery
+		if payload, exist := c.Get("cq"); exist {
+			var ok bool
+			if cq, ok = payload.(*CoverQuery); ok && cq != nil {
+				l.Info(c.Request.Method,
+					zap.Int("status", c.Writer.Status()),
+					zap.String("title", cq.Title),
+					zap.String("author", cq.Author),
+					zap.String("top", cq.TopText),
+					zap.String("guide", cq.GuideText),
+					zap.String("guideP", cq.GuideTextPlacement),
+					zap.Int64("imageID", cq.ImageID),
+					zap.String("IP", c.ClientIP()),
+					zap.String("UA", c.Request.UserAgent()),
+					zap.String("ref", c.Request.Referer()),
+					zap.Duration("lapse", time.Now().Sub(receivedAt)),
+					zap.Strings("err", c.Errors.Errors()),
+				)
+				return
+			}
+		}
 		l.Info(c.Request.Method,
 			zap.Int("status", c.Writer.Status()),
 			zap.String("URL", c.Request.RequestURI),

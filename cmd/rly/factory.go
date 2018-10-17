@@ -34,7 +34,7 @@ func initializeFactory() (err error) {
 		err = errors.Wrap(err, "LoadFont orlyFont")
 		return
 	}
-	factory = orly.NewCoverFactory(1000, 1400, provider, titleFont, normalFont, orlyFont)
+	factory = orly.NewCoverFactory(C.Width, 14*C.Width/10, provider, titleFont, normalFont, orlyFont)
 	err = factory.PreheatCache(C.MaxImageID)
 	if err != nil {
 		err = errors.Wrap(err, "PreheatCache")

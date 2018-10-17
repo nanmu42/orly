@@ -10,4 +10,5 @@ ORLYFont = ""
 Port = ""
 QueueLen = 10
 TitleFont = ""
+Width = 800
 WorkerNum = 4

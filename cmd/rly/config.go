@@ -25,6 +25,8 @@ var (
 
 // Setting is where config lies
 type Setting struct {
+	// cover width, height will be 1.4 * Width
+	Width int
 	// port string for gin like
 	Port string
 	// verbose mode
