@@ -86,10 +86,9 @@
     width: 500px;
   }
 
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 500px) {
     form {
       max-width: 96%;
-      width: auto;
     }
   }
 
