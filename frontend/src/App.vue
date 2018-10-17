@@ -56,8 +56,6 @@
     },
     methods: {
       handleSubmit: function (input) {
-        console.log(input.colorCode)
-        console.log(input.animalCode)
         let color, coverID
         if (input.colorCode !== "" && input.colorCode >= 0 && input.colorCode < this.colors.length) {
           color = this.colors[input.colorCode].substring(1)
@@ -70,7 +68,8 @@
           coverID = Math.floor(Math.random() * 40)
         }
 
-        let rawRequest = "/generate?g_loc=LR&g_text=" + input.guideText +
+        let rawRequest = "/generate?g_loc=" + input.guideTextPlacement +
+          "&g_text=" + input.guideText +
           "&color=" + color +
           "&img_id=" + coverID +
           "&author=" + input.author +

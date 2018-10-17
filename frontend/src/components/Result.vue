@@ -40,7 +40,6 @@
         if (newVal === this.imgSrc) {
           return
         }
-        console.log(newVal)
         this.imgSrc = newVal
       }
     },
