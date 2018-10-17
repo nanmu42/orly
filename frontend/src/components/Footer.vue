@@ -13,7 +13,9 @@
         <img src="../assets/githubIcon.svg">
       </a>
     </p>
-    <p class="bold">Released under the MIT License</p>
+    <p class="bold">Released under the MIT License
+      <a href="https://github.com/nanmu42/orly" target="_blank">Contributes</a> are welcome! :)
+    </p>
     <p>Copyright © 2018 LI Zhennan</p>
   </div>
 </template>
@@ -36,11 +38,15 @@
     text-align: center;
     white-space: pre-line;
   }
-  .social-icon{
+  .social-icon {
     display: inline-block;
-    width: 2.4em;
+    width: 3em;
   }
   .bold {
     font-weight: bold;
+  }
+  a {
+    color: white;
+    text-decoration: underline dotted;
   }
 </style>
