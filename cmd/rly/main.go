@@ -11,6 +11,7 @@ package main
 
 import (
 	"flag"
+	"fmt"
 
 	"go.uber.org/zap/zapcore"
 	"gopkg.in/natefinch/lumberjack.v2"
@@ -24,6 +25,8 @@ var (
 	configFile = flag.String("config", "config.toml", "config.toml file location for rly")
 	w          WorkerPool
 	logger     *zap.Logger
+	// build params
+	Version, BuildDate string
 )
 
 func init() {
@@ -53,6 +56,11 @@ func main() {
 	}()
 
 	flag.Parse()
+
+	fmt.Printf(`O'rly Generator API(%s)
+built on %s
+
+`, Version, BuildDate)
 
 	err = C.LoadFrom(*configFile)
 	if err != nil {
