@@ -8,15 +8,14 @@
 
 <template>
   <div>
-    <p>
+    <p>{{$t("repo_tip")}}
+
       <a class="social-icon" href="https://github.com/nanmu42/orly" target="_blank">
         <img src="../assets/githubIcon.svg">
       </a>
     </p>
-    <p class="bold">Released under the MIT License
-      <a href="https://github.com/nanmu42/orly" target="_blank">Contributes</a> are welcome! :)
-    </p>
-    <p>Copyright © 2018 LI Zhennan</p>
+    <p class="bold">{{$t("mit_license")}}</p>
+    <p>{{$t("copyright")}}</p>
   </div>
 </template>
 
@@ -48,5 +47,10 @@
   a {
     color: white;
     text-decoration: underline dotted;
+    transition-duration: 300ms;
+    transition-timing-function: ease-in-out;
+  }
+  a:hover {
+    transform: scale(1.5);
   }
 </style>

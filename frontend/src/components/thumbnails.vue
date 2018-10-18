@@ -8,7 +8,7 @@
 
 <template>
   <div class="thumbnails">
-    <h2>Animal Codes</h2>
+    <h2>{{$t("animal_code_title")}}</h2>
     <div class="animal"><img src="../assets/thumbnails/0.tif.gif" alt="0"/>0</div>
     <div class="animal"><img src="../assets/thumbnails/1.tif.gif" alt="1"/>1</div>
     <div class="animal"><img src="../assets/thumbnails/2.tif.gif" alt="2"/>2</div>

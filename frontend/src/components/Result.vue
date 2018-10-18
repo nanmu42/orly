@@ -16,7 +16,7 @@
       :fallback="baseURL + 'error.gif'"
       alt="Your O'RLY Book Cover"
     ></progressive-img>
-    <a :href="imgSrc" target="_blank" download>Download</a>
+    <a :href="imgSrc" target="_blank" download>{{$t("download")}}</a>
   </div>
 </template>
 
@@ -52,7 +52,7 @@
   }
   @media screen and (min-width: 970px) {
     .result {
-      margin: 0 0 0 50px;
+      margin: 20px 0 0 50px;
     }
   }
   @media screen and (max-width: 970px) {

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <TitleBar class="w100" title-msg="O'RLY Cover Generator" :init-lang="this.$i18n.locale" :lang-set="langSet"/>
+    <TitleBar class="w100" :title-msg="$t('h1')" :init-lang="this.$i18n.locale" :lang-set="langSet" @lang-changed="handleLanguageChange"/>
     <Inputer class="w50" v-on:input-submit="handleSubmit"/>
     <Result class="w50 gap" v-bind:input-src="imgSrc"/>
     <Thumbnails class="w100"/>
@@ -90,6 +90,9 @@
           "&top_text=" + input.topText +
           "&title=" + input.title
         this.imgSrc = encodeURI(rawRequest)
+      },
+      handleLanguageChange: function (newLang) {
+        this.$i18n.locale = newLang
       }
     }
   }

@@ -52,4 +52,7 @@
     border: none;
     padding: 0 2em 0 1em;
   }
+  div  {
+    margin-bottom: 20px;
+  }
 </style>

@@ -8,34 +8,33 @@
 
 <template>
   <form class="inputer" autocomplete="off" v-on:submit.stop.prevent="onSubmit">
-    <label for="title">Title</label>
-    <textarea id="title" name="title" placeholder="required, at most one linebreak" cols="2" required v-model="input.title"
-              maxlength="43"></textarea>
+    <label for="title">{{$t("title")}}</label>
+    <textarea id="title" name="title" :placeholder="$t('title_placeholder')" cols="2" required v-model="input.title" maxlength="43"></textarea>
 
-    <label for="guide_text">Guide Text</label>
-    <input id="guide_text" name="guide_text" placeholder="such as 'The Definitive Guide'" v-model.trim="input.guideText"
+    <label for="guide_text">{{$t("guide_text")}}</label>
+    <input id="guide_text" name="guide_text" :placeholder="$t('guide_text_placeholder')" v-model.trim="input.guideText"
            maxlength="40">
 
-    <label for="guide_text_placement">Guide Text Placement</label>
+    <label for="guide_text_placement">{{$t("guide_text_placement")}}</label>
     <select id="guide_text_placement" name="guide_text_placement" v-model="input.guideTextPlacement">
-      <option selected value="BR">Bottom Right</option>
-      <option value="BL">Bottom Left</option>
-      <option value="TR">Top Right</option>
-      <option value="TL">Top Left</option>
+      <option selected value="BR">{{$t("bottom_right")}}</option>
+      <option value="BL">{{$t("bottom_left")}}</option>
+      <option value="TR">{{$t("top_right")}}</option>
+      <option value="TL">{{$t("top_left")}}</option>
     </select>
 
-    <label for="author">Author</label>
-    <input id="author" name="author" placeholder="required" required v-model.trim="input.author" maxlength="36">
+    <label for="author">{{$t("author")}}</label>
+    <input id="author" name="author" :placeholder="$t('required')" required v-model.trim="input.author" maxlength="36">
 
-    <label for="top_text">Top Text</label>
-    <input id="top_text" name="top_text" placeholder="required" required v-model.trim="input.topText" maxlength="60">
+    <label for="top_text">{{$t("top_text")}}</label>
+    <input id="top_text" name="top_text" :placeholder="$t('required')" required v-model.trim="input.topText" maxlength="60">
 
-    <label for="animal_code">Animal Code</label>
-    <input id="animal_code" name="animal_code" type="number" placeholder="0-40 (listed below, defaults to random)"
+    <label for="animal_code">{{$t("animal_code")}}</label>
+    <input id="animal_code" name="animal_code" type="number" :placeholder="$t('animal_code_placeholder')"
            v-model.number="input.animalCode" min="0" max="40">
 
-    <label for="color_code">Color Code</label>
-    <input id="color_code" name="color_code" type="number" placeholder="0-16 (listed below, defaults to random)"
+    <label for="color_code">{{$t("color_code")}}</label>
+    <input id="color_code" name="color_code" type="number" :placeholder="$t('color_code_placeholder')"
            v-model.number="input.colorCode" min="0" max="16">
 
     <button type="submit" v-bind:disabled="isSubmitDisabled">{{submitWord}}</button>
@@ -57,9 +56,13 @@
           colorCode: "",
         },
 
-        submitWord: "Generate O'RLY",
-        isSubmitDisabled: false,
+        submitWord: "Loading...",
+        isSubmitDisabled: true,
       }
+    },
+    mounted: function() {
+      this.isSubmitDisabled = false
+      this.submitWord = this.$t("submit_word")
     },
     methods: {
       onSubmit: function () {
@@ -71,11 +74,11 @@
       },
       disableSubmit: function () {
         this.isSubmitDisabled = true
-        this.submitWord = "Generating..."
+        this.submitWord = this.$t("submitting_word")
       },
       enableSubmit: function () {
         this.isSubmitDisabled = false
-        this.submitWord = "Generate O'RLY"
+        this.submitWord = this.$t("submit_word")
       }
     },
   }
