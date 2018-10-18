@@ -229,7 +229,7 @@ func (c *CoverFactory) Draw(title, topText, author, guideText, guideTextPosition
 		textSize = TitleSizePctH1 * c.height / Denominator
 		lineHeight = textSize * 12 / 10
 		ctx.SetFontSize(float64(textSize))
-		ctx.DrawString(title, freetype.Pt(primaryBarRect.Min.X+outPadding/2, primaryBarRect.Max.Y-outPadding))
+		ctx.DrawString("max 2 lines", freetype.Pt(primaryBarRect.Min.X+outPadding/2, primaryBarRect.Max.Y-outPadding))
 	}
 
 	return
