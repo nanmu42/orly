@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <TitleBar class="w100" title-msg="O'RLY Cover Generator"/>
+    <TitleBar class="w100" title-msg="O'RLY Cover Generator" :init-lang="this.$i18n.locale" :lang-set="langSet"/>
     <Inputer class="w50" v-on:input-submit="handleSubmit"/>
     <Result class="w50 gap" v-bind:input-src="imgSrc"/>
     <Thumbnails class="w100"/>
@@ -30,6 +30,19 @@
       Inputer,
       TitleBar,
     },
+    beforeMount: function() {
+      let nativeLang = navigator.language ? navigator.language.substring(0,2) : "en"
+      let langSet = {
+        en: "English",
+        zh: "中文",
+      }
+      this.langSet = langSet
+      if (nativeLang in langSet) {
+        this.$i18n.locale = nativeLang
+      } else {
+        this.$i18n.locale = "en"
+      }
+    },
     data: function () {
       return {
         colors: [
@@ -52,6 +65,7 @@
           "#75a500",
         ],
         imgSrc: process.env.BASE_URL + "example.gif",
+        langSet : {},
       }
     },
     methods: {

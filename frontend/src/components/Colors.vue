@@ -8,7 +8,7 @@
 
 <template>
 <div class="colors">
-  <h2>Color Codes</h2>
+  <h2>{{$t("color_code_title")}}</h2>
   <span v-for="(color, index) of colors" v-bind:style="{background: color}" v-bind:key="index">{{index}}</span>
 </div>
 </template>
