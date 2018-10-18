@@ -37,7 +37,7 @@ func init() {
 		MaxSize:    300, // megabytes
 		MaxBackups: 5,
 		MaxAge:     28, // days
-	}, 256*1024)
+	}, 32*1024)
 	core := zapcore.NewCore(
 		zapcore.NewJSONEncoder(zap.NewProductionEncoderConfig()),
 		zapcore.Lock(w),
