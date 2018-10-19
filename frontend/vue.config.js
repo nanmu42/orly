@@ -6,6 +6,8 @@
  *
  */
 
+const merge = require('deepmerge')
+
 module.exports = {
   devServer: {
       proxy: {
