@@ -68,7 +68,7 @@ func makeCover(t *Task) {
 	if t.Query.ImageID > int64(C.MaxImageID) || t.Query.ImageID < 0 {
 		t.Query.ImageID = 0
 	}
-	img, err := factory.Draw(short(t.Query.Title, 42), short(t.Query.TopText, 60), short(t.Query.Author, 36), short(t.Query.GuideText, 40), t.Query.GuideTextPlacement, t.Query.PrimaryColor, int(t.Query.ImageID))
+	img, err := factory.Draw(short(t.Query.Title, 150), short(t.Query.TopText, 180), short(t.Query.Author, 150), short(t.Query.GuideText, 150), t.Query.GuideTextPlacement, t.Query.PrimaryColor, int(t.Query.ImageID))
 	if err != nil {
 		return
 	}
