@@ -75,7 +75,7 @@ const (
 	alterSeparator = '；'
 	srctag         = "bearychat"
 	helpCommand    = "help"
-	helpContent    = "用法：\n`@orly {标题};{顶部文字};{作者};[副标题];[图片序号 0-40];[颜色序号 0-16]`\n前三个参数必填，分隔符可以用中英文分号。标题可以用`Ctrl+回车`完成换行，其他参数中的回车会被忽略。\n私聊中可以忽略`@orly`\n图片序号和颜色需要可参考： https://rly.nanmu.me/"
+	helpContent    = "用法：\n`@orly {标题};{顶部文字};{作者};[副标题];[图片序号 0-40];[颜色序号 0-16]`\n前三个参数必填，分隔符可以用中英文分号。标题可以用`Ctrl+回车`完成换行，其他参数中的回车会被忽略。\n私聊中可以忽略`@orly`\n图片序号和颜色序号可参考： https://rly.nanmu.me/"
 	helloCommand   = "hello"
 	helloContent   = "喵～ []~(￣▽￣)~*"
 )
