@@ -17,6 +17,7 @@
 *.so
 *.dylib
 /cmd/rly/rly
+/cmd/bearychat/bearychat
 
 # image assets and outputs
 /cmd/**/*.png
@@ -33,4 +34,4 @@
 *.ttf
 
 # config file
-/cmd/rly/config.toml
+config.toml
