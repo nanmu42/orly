@@ -13,6 +13,8 @@ import (
 	"flag"
 	"fmt"
 
+	"github.com/nanmu42/orly/cmd/common"
+
 	"go.uber.org/zap/zapcore"
 	"gopkg.in/natefinch/lumberjack.v2"
 
@@ -32,7 +34,7 @@ var (
 )
 
 func init() {
-	w := NewBufferedLumberjack(&lumberjack.Logger{
+	w := common.NewBufferedLumberjack(&lumberjack.Logger{
 		Filename:   "rly.log",
 		MaxSize:    300, // megabytes
 		MaxBackups: 5,
