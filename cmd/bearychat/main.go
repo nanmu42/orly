@@ -186,7 +186,7 @@ built on %s
 						msgOpt.Text = badImgRequest.Error() + "\n" + helpContent
 					} else {
 						logger.Info("generated", zap.String("url", imgURL))
-						msgOpt.Text = "您的作品新鲜出炉 :D"
+						msgOpt.Text = "您的作品新鲜出炉 :relaxed: "
 						msgOpt.Attachments = []openapi.MessageAttachment{
 							{
 								Images: []openapi.MessageAttachmentImage{
@@ -247,8 +247,8 @@ func conv(content string) (URL string, err error) {
 		values.Set("img_id", strconv.FormatInt(int64(rand.Intn(41)), 10))
 	}
 	// color ID
-	if paramLen >= 6 && strings.Trim(removeLinefeed(parts[4]), " ") != "" {
-		colorID, badNum := strconv.ParseInt(removeLinefeed(parts[4]), 10, 64)
+	if paramLen >= 6 && strings.Trim(removeLinefeed(parts[5]), " ") != "" {
+		colorID, badNum := strconv.ParseInt(removeLinefeed(parts[5]), 10, 64)
 		if badNum != nil {
 			err = errors.New("颜色序号需要为数字哟")
 			return
