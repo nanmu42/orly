@@ -3,7 +3,7 @@
   "mit_license": "Released under the MIT License",
   "copyright": "Copyright © 2018 LI Zhennan",
   "title": "Title",
-  "title_placeholder": "required, at most one linebreak",
+  "title_placeholder": "required, manual linebreak, max two lines :)",
   "guide_text": "Guide Text",
   "guide_text_placeholder": "such as 'The Definitive Guide",
   "guide_text_placement": "Guide Text Placement",
