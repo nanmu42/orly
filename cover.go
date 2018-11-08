@@ -14,6 +14,7 @@ import (
 	"image/draw"
 	"strconv"
 	"strings"
+	"unicode/utf8"
 
 	"golang.org/x/image/math/fixed"
 
@@ -44,6 +45,8 @@ const (
 
 	// TitleSizePctH1 title font size of cover height in milli
 	TitleSizePctH1 = 105
+	// TitleSizePctH1Small title font size of cover height in milli for non-CJK input
+	TitleSizePctH1Small = 85
 	// TitleSizePctH2 title(two lines) font size of cover height in milli
 	TitleSizePctH2 = 55
 	// TopTextSizePctH TopText font size of cover height in milli
@@ -215,7 +218,12 @@ func (c *CoverFactory) Draw(title, topText, author, guideText, guideTextPosition
 	titleLines := strings.Split(title, "\n")
 	switch len(titleLines) {
 	case 1:
-		textSize = TitleSizePctH1 * c.height / Denominator
+		// for letters other than CJK, use smaller font size
+		if utf8.RuneCountInString(titleLines[0]) == len(titleLines[0]) {
+			textSize = TitleSizePctH1Small * c.height / Denominator
+		} else {
+			textSize = TitleSizePctH1 * c.height / Denominator
+		}
 		lineHeight = textSize * 12 / 10
 		ctx.SetFontSize(float64(textSize))
 		ctx.DrawString(titleLines[0], freetype.Pt(primaryBarRect.Min.X+outPadding/2, primaryBarRect.Max.Y-outPadding))
