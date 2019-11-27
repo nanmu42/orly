@@ -37,7 +37,7 @@
     <input id="color_code" name="color_code" type="number" :placeholder="$t('color_code_placeholder')"
            v-model.number="input.colorCode" min="0" max="16">
 
-    <button type="submit" v-bind:disabled="isSubmitDisabled">{{submitWord}}</button>
+    <button type="submit" v-bind:disabled="isSubmitDisabled">$t('submit_word')</button>
   </form>
 </template>
 
