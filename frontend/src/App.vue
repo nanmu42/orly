@@ -35,6 +35,7 @@
       let langSet = {
         en: "English",
         zh: "中文",
+        tr: "Türkçe",
       }
       this.langSet = langSet
       if (nativeLang in langSet) {
