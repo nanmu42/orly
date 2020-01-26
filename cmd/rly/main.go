@@ -13,11 +13,6 @@ import (
 	"flag"
 	"fmt"
 
-	"github.com/nanmu42/orly/cmd/common"
-
-	"go.uber.org/zap/zapcore"
-	lumberjack "gopkg.in/natefinch/lumberjack.v2"
-
 	"go.uber.org/zap"
 
 	"github.com/pkg/errors"
@@ -33,44 +28,41 @@ var (
 	BuildDate string
 )
 
-func init() {
-	w := common.NewBufferedLumberjack(&lumberjack.Logger{
-		Filename:   "rly.log",
-		MaxSize:    300, // megabytes
-		MaxBackups: 5,
-		MaxAge:     28, // days
-	}, 32*1024)
-	core := zapcore.NewCore(
-		zapcore.NewJSONEncoder(zap.NewProductionEncoderConfig()),
-		zapcore.Lock(w),
-		zap.InfoLevel,
-	)
-	logger = zap.New(core)
-}
-
 func main() {
+	flag.Parse()
+
 	var err error
-	defer logger.Sync() // nolint: errcheck
 	defer func() {
 		if err != nil {
-			logger.Fatal("fatal error",
-				zap.Error(err),
-			)
+			if logger != nil {
+				logger.Error("sequel exits with error", zap.Error(err))
+			} else {
+				fmt.Println(err)
+			}
 		}
 	}()
 
-	flag.Parse()
-
-	fmt.Printf(`O'rly Generator API(%s)
-built on %s
-
-`, Version, BuildDate)
-
 	err = C.LoadFrom(*configFile)
 	if err != nil {
-		err = errors.Wrap(err, "C.LoadFrom")
+		err = fmt.Errorf("loading configFile file: toml.DecodeFile: %w", err)
 		return
 	}
+
+	if C.Debug {
+		logger, err = zap.NewDevelopment()
+	} else {
+		logger, err = zap.NewProduction()
+	}
+	if err != nil {
+		err = fmt.Errorf("init zap logger: %w", err)
+		return
+	}
+	defer logger.Sync() // nolint: errcheck
+	zap.ReplaceGlobals(logger)
+
+	logger.Info(`O'rly Generator API starting...`,
+		zap.String("version", Version),
+		zap.String("buildAt", BuildDate))
 
 	err = initializeFactory()
 	if err != nil {

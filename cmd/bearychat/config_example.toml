@@ -1,6 +1,0 @@
-# Copy this file to create default config
-#
-# cp config_example.toml config.toml
-
-OrlyEndpoint = "https://api.rly.nanmu.me/generate?"
-RTMToken = ""
