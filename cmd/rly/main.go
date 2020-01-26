@@ -16,7 +16,7 @@ import (
 	"github.com/nanmu42/orly/cmd/common"
 
 	"go.uber.org/zap/zapcore"
-	"gopkg.in/natefinch/lumberjack.v2"
+	lumberjack "gopkg.in/natefinch/lumberjack.v2"
 
 	"go.uber.org/zap"
 
@@ -50,7 +50,7 @@ func init() {
 
 func main() {
 	var err error
-	defer logger.Sync()
+	defer logger.Sync() // nolint: errcheck
 	defer func() {
 		if err != nil {
 			logger.Fatal("fatal error",

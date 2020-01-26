@@ -35,14 +35,14 @@ func GenerateCover(c *gin.Context) {
 
 	cq, err := ParseCoverQuery(c.Request.URL.Query())
 	if err != nil {
-		c.Error(err)
+		_ = c.Error(err)
 		c.String(http.StatusBadRequest, "%v", err)
 		return
 	}
 
 	output, err := w.Handle(&cq)
 	if err != nil {
-		c.Error(err)
+		_ = c.Error(err)
 		c.String(http.StatusInternalServerError, "%v", err)
 		return
 	}
@@ -73,9 +73,7 @@ func makeCover(t *Task) {
 		return
 	}
 
-	err = jpeg.Encode(&output, img, &jpeg.Options{85})
-
-	return
+	err = jpeg.Encode(&output, img, &jpeg.Options{Quality: 85})
 }
 
 func setupRouter() (router *gin.Engine) {
@@ -148,8 +146,6 @@ func startAPI(handler http.Handler, port string) {
 	}
 	logger.Info("API exited successfully. :)")
 	fmt.Println("API exited successfully. :)")
-
-	return
 }
 
 // RequestLogger logs every request via zap
@@ -158,7 +154,7 @@ func RequestLogger(l *zap.Logger) gin.HandlerFunc {
 		// request timer
 		receivedAt := time.Now()
 		// counter++
-		sequense := atomic.AddUint64(&requestCounter, 1)
+		sequence := atomic.AddUint64(&requestCounter, 1)
 
 		// before
 		c.Next()
@@ -167,8 +163,9 @@ func RequestLogger(l *zap.Logger) gin.HandlerFunc {
 		if payload, exist := c.Get("cq"); exist {
 			var ok bool
 			if cq, ok = payload.(*CoverQuery); ok && cq != nil {
-				l.Info(c.Request.Method,
-					zap.Uint64("seq", sequense),
+				l.Info("APIAuditLog",
+					zap.Uint64("seq", sequence),
+					zap.String("method", c.Request.Method),
 					zap.Int("status", c.Writer.Status()),
 					zap.String("title", cq.Title),
 					zap.String("author", cq.Author),
@@ -179,20 +176,21 @@ func RequestLogger(l *zap.Logger) gin.HandlerFunc {
 					zap.String("IP", c.ClientIP()),
 					zap.String("UA", c.Request.UserAgent()),
 					zap.String("ref", c.Request.Referer()),
-					zap.Duration("lapse", time.Now().Sub(receivedAt)),
+					zap.Duration("lapse", time.Since(receivedAt)),
 					zap.Strings("err", c.Errors.Errors()),
 				)
 				return
 			}
 		}
-		l.Info(c.Request.Method,
-			zap.Uint64("seq", sequense),
+		l.Info("APIAuditLog",
+			zap.Uint64("seq", sequence),
+			zap.String("method", c.Request.Method),
 			zap.Int("status", c.Writer.Status()),
 			zap.String("URL", c.Request.RequestURI),
 			zap.String("IP", c.ClientIP()),
 			zap.String("UA", c.Request.UserAgent()),
 			zap.String("ref", c.Request.Referer()),
-			zap.Duration("lapse", time.Now().Sub(receivedAt)),
+			zap.Duration("lapse", time.Since(receivedAt)),
 			zap.Strings("err", c.Errors.Errors()),
 		)
 	}
