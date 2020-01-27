@@ -35,7 +35,7 @@ func main() {
 	defer func() {
 		if err != nil {
 			if logger != nil {
-				logger.Error("sequel exits with error", zap.Error(err))
+				logger.Error("rly exits with error", zap.Error(err))
 			} else {
 				fmt.Println(err)
 			}
