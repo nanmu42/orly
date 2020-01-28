@@ -1,6 +1,6 @@
 on:
   release:
-    types: [published]
+    types: [published, prereleased]
 
 name: Build, tag, and push image to Docker Hub
 
