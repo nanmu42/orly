@@ -7,8 +7,6 @@
  */
 
 const merge = require('deepmerge')
-const CompressionWebpackPlugin = require('compression-webpack-plugin')
-const fileToCompressRegex = /\.(js|css|html|svg)$/
 
 module.exports = {
   productionSourceMap: false,
@@ -44,31 +42,5 @@ module.exports = {
     }
   },
 
-  configureWebpack: () => {
-    let plugins = []
-    if (process.env.NODE_ENV === 'production') {
-      plugins = [
-        new CompressionWebpackPlugin({
-          filename: '[path].br[query]',
-          algorithm: 'brotliCompress',
-          test: fileToCompressRegex,
-          compressionOptions: {level: 11},
-          threshold: 512,
-          minRatio: 0.9,
-          deleteOriginalAssets: false,
-        }),
-        new CompressionWebpackPlugin({
-          filename: '[path].gz[query]',
-          algorithm: 'gzip',
-          test: fileToCompressRegex,
-          compressionOptions: {level: 9},
-          threshold: 512,
-          minRatio: 0.9,
-          deleteOriginalAssets: false,
-        }),
-      ]
-    }
-    return {plugins}
-  },
 }
 

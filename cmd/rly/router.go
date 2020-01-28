@@ -75,26 +75,37 @@ func makeCover(t *Task) {
 	err = jpeg.Encode(&output, img, &jpeg.Options{Quality: 85})
 }
 
-func setupRouter() (router *gin.Engine) {
+func setupRouter() (mux *http.ServeMux) {
 	if C.Debug {
 		gin.SetMode(gin.DebugMode)
 	} else {
 		gin.SetMode(gin.ReleaseMode)
 	}
-	router = gin.New()
+	router := gin.New()
 	router.HandleMethodNotAllowed = true
 	router.Use(gin.Recovery())
 	// log requests
 	router.Use(RequestLogger(logger))
 
 	// setup routes
-	router.GET("/generate", GenerateCover)
+	router.GET("/api/generate", GenerateCover)
+	router.GET("/api/hello", Hello)
+
+	mux = http.NewServeMux()
+	mux.Handle("/api/", router)
+	mux.Handle("/", http.FileServer(gin.Dir("web", false)))
+
 	return
+}
+
+// Hello for health check
+func Hello(c *gin.Context) {
+	c.Status(http.StatusNoContent)
 }
 
 func startAPI(handler http.Handler, port string) {
 	// timeout for safe exit
-	const shutdownTimeout = 2 * time.Minute
+	const shutdownTimeout = 10 * time.Second
 
 	var exitSignals = []os.Signal{syscall.SIGINT, syscall.SIGTERM, syscall.SIGQUIT}
 
@@ -102,9 +113,9 @@ func startAPI(handler http.Handler, port string) {
 		Addr:    port,
 		Handler: handler,
 		// ReadTimeout time limit to read the request
-		ReadTimeout: 10 * time.Second,
+		ReadTimeout: 4 * time.Second,
 		// WriteTimeout time limit for request reading and response
-		WriteTimeout: 40 * time.Second,
+		WriteTimeout: 8 * time.Second,
 		// IdleTimeout keep-alive waiting time
 		IdleTimeout: 60 * time.Second,
 		// MaxHeaderBytes max header is 8KB

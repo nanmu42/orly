@@ -83,7 +83,7 @@
           coverID = Math.floor(Math.random() * 40)
         }
 
-        let rawRequest = "/generate?g_loc=" + input.guideTextPlacement +
+        let rawRequest = "/api/generate?g_loc=" + input.guideTextPlacement +
           "&g_text=" + input.guideText +
           "&color=" + color +
           "&img_id=" + coverID +
