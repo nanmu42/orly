@@ -49,11 +49,13 @@ O'RLY 是一个简易的API服务和静态前端的组合：
 
 "O'RLY 封面工厂" 仅为娱乐，与O'Reilly Media没有任何联系。 
 
- 本作品使用了由Google和Adobe牵头制作的思源宋体以及思源黑体，
+本作品使用了由Google和Adobe牵头制作的思源宋体以及思源黑体，
  中国的常州华文、韩国的 Sandoll Communications、日本的 Iwata Corporation
  参与了上述字体的设计制作。 
+ 
+本作品使用了由Adobe牵头制作的Source Sans Pro，设计师为Paul D. Hunt.
 
- 封面所用图片来自于 [USF ClipArt ETC](https://etc.usf.edu/clipart/) 项目。
+封面所用图片来自于 [USF ClipArt ETC](https://etc.usf.edu/clipart/) 项目。
  
  # 项目许可
  

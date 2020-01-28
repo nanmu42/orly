@@ -49,9 +49,11 @@ There are several projects which share the idea:
 
 "O'RLY Cover Generator" is just a parody, and it has no concern with O'Reilly Media. 
 
- This work uses Source Han Serif and Source Han Sans from Adobe and Google, 
+This work uses Source Han Serif and Source Han Sans from Adobe and Google, 
  with participation from partner foundries Changzhou SinoType in China, 
  Iwata Corporation in Japan, and Sandoll Communications in Korea. 
+ 
+This work uses TrueType version of Source Sans Pro from Adobe by Paul D. Hunt.
 
 The animal(well, not all of them are animal) images are from the [USF ClipArt ETC](https://etc.usf.edu/clipart/) project.
 
