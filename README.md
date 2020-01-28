@@ -13,6 +13,8 @@ supporting a wide range of language including CJK.
 
 O'RLY is living at https://rly.nanmu.me/
 
+Docker images can be found at https://hub.docker.com/r/nanmu42/orly
+
 # Develop O'RLY
 
 O'RLY can be built in following commands:

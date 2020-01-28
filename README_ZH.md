@@ -14,6 +14,8 @@ O'RLY 基于Golang和Vue.js实现。
 
 你可以[点击这里](https://rly.nanmu.me/)访问O'RLY 封面工厂。
 
+Docker镜像信息可以在[此处](https://hub.docker.com/r/nanmu42/orly)获取。
+
 # 开发
 
 使用下列命令可编译 O'RLY：
