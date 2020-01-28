@@ -2,8 +2,10 @@ FROM golang:alpine3.11 as golang
 RUN apk --no-cache add make git tar tzdata ca-certificates nodejs yarn wget
 WORKDIR /app
 COPY . .
-RUN mkdir assets && cd assets && \
-        wget -nc
+RUN mkdir -p assets && \
+        cd assets && \
+        wget -nc https://github.com/nanmu42/orly/releases/download/1.1.0-beta/cover-images.tar.xz && \
+        wget -nc https://github.com/nanmu42/orly/releases/download/1.1.0-beta/fonts.tar.xz
 RUN make all
 
 FROM alpine:3.11
