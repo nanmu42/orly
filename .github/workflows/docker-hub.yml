@@ -1,0 +1,28 @@
+on:
+  push:
+    branches:
+      - master
+
+name: Build, tag, and push image to Docker Hub
+
+jobs:
+  publish:
+    name: build and push
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+
+    - name: Build, tag, and push
+      id: build-image
+      env:
+        HUB_USERNAME: ${{ secrets.HUB_USERNAME }}
+        HUB_PASSWORD: ${{ secrets.HUB_PASSWORD }}
+        HUB_REPOSITORY: nanmu42/orly
+        IMAGE_TAG: unstable 
+      run: |
+        docker login -u $HUB_USERNAME -p $HUB_PASSWORD
+        docker build -t $HUB_REPOSITORY:$IMAGE_TAG .
+        docker push $HUB_REPOSITORY:$IMAGE_TAG
+        echo "::set-output name=image::$HUB_REPOSITORY:$IMAGE_TAG"
