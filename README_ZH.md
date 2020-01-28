@@ -1,5 +1,7 @@
 [English](https://github.com/nanmu42/orly/blob/master/README.md) | **中文**
 
+[![Build Status](https://github.com/nanmu42/orly/workflows/build/badge.svg)](https://github.com/nanmu42/orly/actions)
+[![Lint Status](https://github.com/nanmu42/orly/workflows/golangci-lint/badge.svg)](https://github.com/nanmu42/orly/actions)
 [![Go Report Card](https://goreportcard.com/badge/github.com/nanmu42/orly)](https://goreportcard.com/report/github.com/nanmu42/orly)
 [![GoDoc](https://godoc.org/github.com/nanmu42/orly?status.svg)](https://godoc.org/github.com/nanmu42/orly)
 
@@ -13,6 +15,17 @@ O'RLY 基于Golang和Vue.js实现。
 你可以[点击这里](https://rly.nanmu.me/)访问O'RLY 封面工厂。
 
 # 开发
+
+使用下列命令可编译 O'RLY：
+
+```bash
+mkdir -p assets
+cd assets
+wget -nc https://github.com/nanmu42/orly/releases/download/1.1.0-beta/cover-images.tar.xz
+wget -nc https://github.com/nanmu42/orly/releases/download/1.1.0-beta/fonts.tar.xz
+cd ..
+make all
+```
 
 O'RLY 是一个简易的API服务和静态前端的组合：
 
