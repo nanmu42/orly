@@ -1,7 +1,9 @@
 FROM golang:alpine3.11 as golang
-RUN apk --no-cache add make git tar tzdata ca-certificates nodejs yarn
+RUN apk --no-cache add make git tar tzdata ca-certificates nodejs yarn wget
 WORKDIR /app
 COPY . .
+RUN mkdir assets && cd assets && \
+        wget -nc
 RUN make all
 
 FROM alpine:3.11

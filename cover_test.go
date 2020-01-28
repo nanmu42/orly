@@ -9,7 +9,6 @@
 package orly
 
 import (
-	"log"
 	"math/rand"
 	"testing"
 
@@ -26,6 +25,11 @@ const (
 
 func init() {
 	var err error
+	defer func() {
+		if err != nil {
+			panic(err)
+		}
+	}()
 
 	provider := NewImageProvider(LoadTIFFFromFolder("coverimage"))
 	normalFont, err := LoadFont("font/SourceHanSans-Medium.ttc")
@@ -49,7 +53,7 @@ func init() {
 	err = coverFact.PreheatCache(maxImageID)
 	if err != nil {
 		err = errors.Wrap(err, "PreheatCache")
-		log.Fatal(err)
+		return
 	}
 }
 

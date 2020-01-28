@@ -88,12 +88,12 @@ type CoverFactory struct {
 // NewCoverFactory initialize the cover
 func NewCoverFactory(width, height int, provider *ImageProvider, titleFont, regularFont, orlyFont *truetype.Font) (c *CoverFactory) {
 	prototype := image.NewRGBA(image.Rectangle{
-		Min: image.ZP,
+		Min: image.Point{},
 		Max: image.Point{width, height},
 	})
 
 	// fill cover with background color(white)
-	draw.Draw(prototype, prototype.Rect, image.White, image.ZP, draw.Src)
+	draw.Draw(prototype, prototype.Rect, image.White, image.Point{}, draw.Src)
 	// draw O RLY?
 	ctx := freetype.NewContext()
 
@@ -105,7 +105,7 @@ func NewCoverFactory(width, height int, provider *ImageProvider, titleFont, regu
 	ctx.SetFont(orlyFont)
 	ctx.SetFontSize(float64(FontORLYPctH * height / Denominator))
 	var outPadding = PaddingPctH * height / Denominator
-	ctx.DrawString("O'RLY?", freetype.Pt(outPadding, height-outPadding))
+	_, _ = ctx.DrawString("O'RLY?", freetype.Pt(outPadding, height-outPadding))
 
 	return &CoverFactory{
 		width:          width,
@@ -134,18 +134,18 @@ func (c *CoverFactory) PreheatCache(maxImageID int) (err error) {
 // Draw outputs the cover in image
 func (c *CoverFactory) Draw(title, topText, author, guideText, guideTextPosition string, primaryColor color.Color, imageID int) (img *image.RGBA, err error) {
 	img = image.NewRGBA(image.Rectangle{
-		Min: image.ZP,
+		Min: image.Point{},
 		Max: image.Point{c.width, c.height},
 	})
 
 	// fill cover with its prototype
-	draw.Draw(img, img.Rect, c.CoverPrototype, image.ZP, draw.Src)
+	draw.Draw(img, img.Rect, c.CoverPrototype, image.Point{}, draw.Src)
 
 	// draw two bars
 	theme := image.NewUniform(primaryColor)
 	primaryBarRect := c.primaryBarRect()
-	draw.Draw(img, primaryBarRect, theme, image.ZP, draw.Src)
-	draw.Draw(img, c.secondaryBarRect(), theme, image.ZP, draw.Src)
+	draw.Draw(img, primaryBarRect, theme, image.Point{}, draw.Src)
+	draw.Draw(img, c.secondaryBarRect(), theme, image.Point{}, draw.Src)
 
 	// draw cover image
 	coverRect := c.coverImgRect()
@@ -170,17 +170,21 @@ func (c *CoverFactory) Draw(title, topText, author, guideText, guideTextPosition
 	var outPadding = PaddingPctH * c.height / Denominator
 	// topText, mind the order
 	textSize = TopTextSizePctH * c.height / Denominator
-	lineHeight = textSize * 12 / 10
+	lineHeight = textSize * 12 / 10 // nolint: ineffassign
 	ctx.SetFontSize(float64(textSize))
 	textWidth = calcTextSize(ctx, topText)
 	ctx.SetClip(img.Rect)
 	ctx.SetDst(img)
-	ctx.DrawString(topText, freetype.Pt((c.width-textWidth)/2, SecondaryBarHPct*c.height/Denominator+lineHeight))
+	_, err = ctx.DrawString(topText, freetype.Pt((c.width-textWidth)/2, SecondaryBarHPct*c.height/Denominator+lineHeight))
+	if err != nil {
+		err = errors.Wrap(err, "ctx.DrawString topText")
+		return
+	}
 
 	// GuideText, mind the order
 	if len(guideText) > 0 {
 		textSize = GuideTextPctH * c.height / Denominator
-		lineHeight = textSize * 12 / 10
+		lineHeight = textSize * 12 / 10 // nolint: ineffassign
 		ctx.SetFontSize(float64(textSize))
 		textWidth = calcTextSize(ctx, guideText)
 		ctx.SetClip(img.Rect)
@@ -198,17 +202,24 @@ func (c *CoverFactory) Draw(title, topText, author, guideText, guideTextPosition
 		default:
 			guideTextPivot = freetype.Pt(primaryBarRect.Max.X-textWidth, primaryBarRect.Max.Y+lineHeight)
 		}
-		ctx.DrawString(guideText, guideTextPivot)
+		_, err = ctx.DrawString(guideText, guideTextPivot)
+		if err != nil {
+			err = errors.Wrap(err, "ctx.DrawString guideText")
+			return
+		}
 	}
 
 	// author, mind the order
 	textSize = AuthorSizePctH * c.height / Denominator
-	lineHeight = textSize * 12 / 10
 	ctx.SetFontSize(float64(textSize))
 	textWidth = calcTextSize(ctx, author)
 	ctx.SetClip(img.Rect)
 	ctx.SetDst(img)
-	ctx.DrawString(author, freetype.Pt(c.width-textWidth-outPadding, c.height-outPadding))
+	_, err = ctx.DrawString(author, freetype.Pt(c.width-textWidth-outPadding, c.height-outPadding))
+	if err != nil {
+		err = errors.Wrap(err, "ctx.DrawString author")
+		return
+	}
 
 	// title, line break is handled by user
 	ctx.SetClip(img.Rect)
@@ -224,20 +235,34 @@ func (c *CoverFactory) Draw(title, topText, author, guideText, guideTextPosition
 		} else {
 			textSize = TitleSizePctH1 * c.height / Denominator
 		}
-		lineHeight = textSize * 12 / 10
 		ctx.SetFontSize(float64(textSize))
-		ctx.DrawString(titleLines[0], freetype.Pt(primaryBarRect.Min.X+outPadding/2, primaryBarRect.Max.Y-outPadding))
+		_, err = ctx.DrawString(titleLines[0], freetype.Pt(primaryBarRect.Min.X+outPadding/2, primaryBarRect.Max.Y-outPadding))
+		if err != nil {
+			err = errors.Wrap(err, "ctx.DrawString titlelines 0")
+			return
+		}
 	case 2:
 		textSize = TitleSizePctH2 * c.height / Denominator
-		lineHeight = textSize * 12 / 10
+		lineHeight = textSize * 12 / 10 // nolint: ineffassign
 		ctx.SetFontSize(float64(textSize))
-		ctx.DrawString(titleLines[1], freetype.Pt(primaryBarRect.Min.X+outPadding/2, primaryBarRect.Max.Y-outPadding))
-		ctx.DrawString(titleLines[0], freetype.Pt(primaryBarRect.Min.X+outPadding/2, primaryBarRect.Max.Y-outPadding-lineHeight))
+		_, err = ctx.DrawString(titleLines[1], freetype.Pt(primaryBarRect.Min.X+outPadding/2, primaryBarRect.Max.Y-outPadding))
+		if err != nil {
+			err = errors.Wrap(err, "ctx.DrawString titlelines 1")
+			return
+		}
+		_, err = ctx.DrawString(titleLines[0], freetype.Pt(primaryBarRect.Min.X+outPadding/2, primaryBarRect.Max.Y-outPadding-lineHeight))
+		if err != nil {
+			err = errors.Wrap(err, "ctx.DrawString titlelines 0")
+			return
+		}
 	default:
 		textSize = TitleSizePctH1 * c.height / Denominator
-		lineHeight = textSize * 12 / 10
 		ctx.SetFontSize(float64(textSize))
-		ctx.DrawString("max 2 lines", freetype.Pt(primaryBarRect.Min.X+outPadding/2, primaryBarRect.Max.Y-outPadding))
+		_, err = ctx.DrawString("max 2 lines", freetype.Pt(primaryBarRect.Min.X+outPadding/2, primaryBarRect.Max.Y-outPadding))
+		if err != nil {
+			err = errors.Wrap(err, "ctx.DrawString max 2 lines")
+			return
+		}
 	}
 
 	return

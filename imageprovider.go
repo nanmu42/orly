@@ -75,7 +75,7 @@ func (i *ImageProvider) Load(fileName string, size image.Rectangle) (img image.I
 	fitted := imaging.Fit(origin, size.Dx(), size.Dy(), imaging.Box)
 	// converted to RGBA
 	rgba := image.NewRGBA(fitted.Bounds())
-	draw.Draw(rgba, rgba.Bounds(), fitted, image.ZP, draw.Src)
+	draw.Draw(rgba, rgba.Bounds(), fitted, image.Point{}, draw.Src)
 	// push to cache
 	i.cache.Store(key, rgba)
 	img = rgba
