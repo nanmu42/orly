@@ -17,11 +17,13 @@ jobs:
     - name: Build, tag, and push
       id: build-image
       env:
-        HUB_USERNAME: nanmu42
-        HUB_PASSWORD: ${{ github.token }}
-        HUB_REPOSITORY: docker.pkg.github.com/nanmu42/orly/rly
+        DOCKER_HUB_REPO: nanmu42/orly
+        ALICLOUD_REPO: registry.cn-hongkong.aliyuncs.com/nanmu42/orly
         IMAGE_TAG: ${{ steps.vars.outputs.tag }}
       run: |
-        docker login docker.pkg.github.com --username $HUB_USERNAME -p $HUB_PASSWORD
-        docker build -t $HUB_REPOSITORY:$IMAGE_TAG .
-        docker push $HUB_REPOSITORY:$IMAGE_TAG
+        docker login --username ${{ secrets.DOCKER_HUB_USER }} -p ${{ secrets.DOCKER_HUB_PASSWORD }}
+        docker login registry.cn-hongkong.aliyuncs.com --username ${{ secrets.ALICLOUD_USER }} -p ${{ secrets.ALICLOUD_PASSWORD }}
+        docker build -t $DOCKER_HUB_REPO:$IMAGE_TAG .
+        docker tag $DOCKER_HUB_REPO:$IMAGE_TAG $ALICLOUD_REPO:$IMAGE_TAG
+        docker push $DOCKER_HUB_REPO:$IMAGE_TAG
+        docker push $ALICLOUD_REPO:$IMAGE_TAG
