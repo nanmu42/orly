@@ -16,9 +16,9 @@ jobs:
       id: build-image
       env:
         HUB_USERNAME: nanmu42
-        HUB_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+        HUB_PASSWORD: ${{ github.token }}
         HUB_REPOSITORY: docker.pkg.github.com/nanmu42/orly/rly
-        IMAGE_TAG: ${{ GITHUB_REF }}
+        IMAGE_TAG: ${{ github.ref }}
       run: |
         docker login -u $HUB_USERNAME -p $HUB_PASSWORD
         docker build -t $HUB_REPOSITORY:$IMAGE_TAG .
