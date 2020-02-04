@@ -20,6 +20,6 @@ jobs:
         HUB_REPOSITORY: docker.pkg.github.com/nanmu42/orly/rly
         IMAGE_TAG: ${{ github.ref }}
       run: |
-        docker login -u $HUB_USERNAME -p $HUB_PASSWORD
+        docker login docker.pkg.github.com --username $HUB_USERNAME -p $HUB_PASSWORD
         docker build -t $HUB_REPOSITORY:$IMAGE_TAG .
         docker push $HUB_REPOSITORY:$IMAGE_TAG
