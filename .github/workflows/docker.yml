@@ -22,7 +22,7 @@ jobs:
         IMAGE_TAG: ${{ steps.vars.outputs.tag }}
       run: |
         docker login --username ${{ secrets.DOCKER_HUB_USER }} -p ${{ secrets.DOCKER_HUB_PASSWORD }}
-        docker login --username ${{ secrets.ALICLOUD_USER }} -p ${{ secrets.ALICLOUD_PASSWORD }} registry.cn-hongkong.aliyuncs.com
+        docker login registry.cn-hongkong.aliyuncs.com --username ${{ secrets.ALICLOUD_USER }} -p ${{ secrets.ALICLOUD_PASSWORD }}
         docker build -t $DOCKER_HUB_REPO:$IMAGE_TAG .
         docker tag $DOCKER_HUB_REPO:$IMAGE_TAG $ALICLOUD_REPO:$IMAGE_TAG
         docker push $DOCKER_HUB_REPO:$IMAGE_TAG
