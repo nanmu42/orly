@@ -2,6 +2,7 @@
 
 [![Build Status](https://github.com/nanmu42/orly/workflows/build/badge.svg)](https://github.com/nanmu42/orly/actions)
 [![Lint Status](https://github.com/nanmu42/orly/workflows/golangci-lint/badge.svg)](https://github.com/nanmu42/orly/actions)
+[![Docker Image](https://github.com/nanmu42/orly/workflows/Docker%20Image/badge.svg)](https://hub.docker.com/r/nanmu42/orly)
 [![Go Report Card](https://goreportcard.com/badge/github.com/nanmu42/orly)](https://goreportcard.com/report/github.com/nanmu42/orly)
 [![GoDoc](https://godoc.org/github.com/nanmu42/orly?status.svg)](https://godoc.org/github.com/nanmu42/orly)
 
@@ -11,9 +12,17 @@ O'RLY Cover Generator is a parody book cover generator,
 implemented in Golang and Vue.js,
 supporting a wide range of language including CJK.
 
-O'RLY is living at https://rly.nanmu.me/
+O'RLY is living at https://orly.nanmu.me/
 
 Docker images can be found at https://hub.docker.com/r/nanmu42/orly
+
+# Docker Image
+
+```bash
+docker pull nanmu42/orly:[tag]
+```
+
+Refer to https://hub.docker.com/r/nanmu42/orly/tags for available tags.
 
 # Develop O'RLY
 

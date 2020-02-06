@@ -2,6 +2,7 @@
 
 [![Build Status](https://github.com/nanmu42/orly/workflows/build/badge.svg)](https://github.com/nanmu42/orly/actions)
 [![Lint Status](https://github.com/nanmu42/orly/workflows/golangci-lint/badge.svg)](https://github.com/nanmu42/orly/actions)
+[![Docker Image](https://github.com/nanmu42/orly/workflows/Docker%20Image/badge.svg)](https://hub.docker.com/r/nanmu42/orly)
 [![Go Report Card](https://goreportcard.com/badge/github.com/nanmu42/orly)](https://goreportcard.com/report/github.com/nanmu42/orly)
 [![GoDoc](https://godoc.org/github.com/nanmu42/orly?status.svg)](https://godoc.org/github.com/nanmu42/orly)
 
@@ -12,9 +13,17 @@ O'RLY 封面工厂是一个娱乐性的书籍封面生成器，
 
 O'RLY 基于Golang和Vue.js实现。
 
-你可以[点击这里](https://rly.nanmu.me/)访问O'RLY 封面工厂。
+你可以[点击这里](https://orly.nanmu.me/)访问O'RLY 封面工厂。
 
 Docker镜像信息可以在[此处](https://hub.docker.com/r/nanmu42/orly)获取。
+
+# Docker
+
+```bash
+docker pull registry.cn-hongkong.aliyuncs.com/nanmu42/orly:[tag]
+```
+
+可用tag请参阅[这里](https://github.com/nanmu42/orly/releases)。
 
 # 开发
 
