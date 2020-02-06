@@ -16,6 +16,8 @@ import (
 	"go.uber.org/zap"
 
 	"github.com/pkg/errors"
+	// let rly knows about container limits
+	_ "go.uber.org/automaxprocs"
 )
 
 var (
