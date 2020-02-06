@@ -20,9 +20,13 @@ jobs:
         DOCKER_HUB_REPO: nanmu42/orly
         ALICLOUD_REPO: registry.cn-hongkong.aliyuncs.com/nanmu42/orly
         IMAGE_TAG: ${{ steps.vars.outputs.tag }}
+        DOCKER_HUB_USER: ${{ secrets.DOCKER_HUB_USER }}
+        DOCKER_HUB_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
+        ALICLOUD_USER: ${{ secrets.ALICLOUD_USER }}
+        ALICLOUD_PASSWORD: ${{ secrets.ALICLOUD_PASSWORD }}
       run: |
-        docker login --username ${{ secrets.DOCKER_HUB_USER }} -p ${{ secrets.DOCKER_HUB_PASSWORD }}
-        docker login registry.cn-hongkong.aliyuncs.com --username ${{ secrets.ALICLOUD_USER }} -p ${{ secrets.ALICLOUD_PASSWORD }}
+        docker login --username $DOCKER_HUB_USER -p $DOCKER_HUB_PASSWORD
+        docker login --username $ALICLOUD_USER -p $ALICLOUD_PASSWORD registry.cn-hongkong.aliyuncs.com
         docker build -t $DOCKER_HUB_REPO:$IMAGE_TAG .
         docker tag $DOCKER_HUB_REPO:$IMAGE_TAG $ALICLOUD_REPO:$IMAGE_TAG
         docker push $DOCKER_HUB_REPO:$IMAGE_TAG
