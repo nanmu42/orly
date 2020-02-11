@@ -36,6 +36,7 @@
         en: "English",
         zh: "中文",
         tr: "Türkçe",
+        kr: "한국어",
       }
       this.langSet = langSet
       if (nativeLang in langSet) {
