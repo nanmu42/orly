@@ -66,8 +66,8 @@ O'RLY 是一个简易的API服务和静态前端的组合：
 
 :hugs: 感谢以下贡献者：
 
-* @TahsinGokalp （土耳其语翻译）
-* @wooogi123 （韩语翻译）
+* [TahsinGokalp](https://github.com/TahsinGokalp) （土耳其语翻译）
+* [wooogi123](https://github.com/wooogi123) （韩语翻译）
 
 # 兄弟项目
 

@@ -66,8 +66,8 @@ Or simply...
 
 Many thanks :hugs: to following contributors:
 
-* @TahsinGokalp (Turkish Translation)
-* @wooogi123 (Korean Translation)
+* [TahsinGokalp](https://github.com/TahsinGokalp) (Turkish Translation)
+* [wooogi123](https://github.com/wooogi123) (Korean Translation)
 
 # Projects in Brotherhood
 
