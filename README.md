@@ -62,6 +62,13 @@ Or simply...
 
 * Sharing the fun :wink:
 
+# Contributors
+
+Many thanks :hugs: to following contributors:
+
+* @TahsinGokalp (Turkish Translation)
+* @wooogi123 (Korean Translation)
+
 # Projects in Brotherhood
 
 There are several projects which share the idea:
