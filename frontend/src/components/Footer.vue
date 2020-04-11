@@ -15,13 +15,18 @@
       </a>
     </p>
     <p class="bold">{{$t("mit_license")}}</p>
-    <p>{{$t("copyright")}}</p>
+    <p>Copyright © {{year}} LI Zhennan</p>
   </div>
 </template>
 
 <script>
   export default {
-    name: "Footer"
+    name: "Footer",
+    computed: {
+      year() {
+        return (new Date()).getFullYear()
+      },
+    },
   }
 </script>
 
