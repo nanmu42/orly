@@ -84,14 +84,8 @@
           coverID = Math.floor(Math.random() * 40)
         }
 
-        let rawRequest = "/api/generate?g_loc=" + input.guideTextPlacement +
-          "&g_text=" + input.guideText +
-          "&color=" + color +
-          "&img_id=" + coverID +
-          "&author=" + input.author +
-          "&top_text=" + input.topText +
-          "&title=" + input.title
-        this.imgSrc = encodeURI(rawRequest)
+        // escape user's input
+        this.imgSrc = `/api/generate?g_loc=${input.guideTextPlacement}&g_text=${encodeURIComponent(input.guideText)}&color=${color}&img_id=${coverID}&author=${encodeURIComponent(input.author)}&top_text=${encodeURIComponent(input.topText)}&title=${encodeURIComponent(input.title)}`
       },
       handleLanguageChange: function (newLang) {
         this.$i18n.locale = newLang
