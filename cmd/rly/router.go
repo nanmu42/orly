@@ -19,6 +19,7 @@ import (
 	"syscall"
 	"time"
 
+	"github.com/nanmu42/gzip"
 	"go.uber.org/zap"
 
 	"github.com/gin-gonic/gin"
@@ -93,7 +94,7 @@ func setupRouter() (mux *http.ServeMux) {
 
 	mux = http.NewServeMux()
 	mux.Handle("/api/", router)
-	mux.Handle("/", http.FileServer(gin.Dir("web", false)))
+	mux.Handle("/", gzip.DefaultHandler().WrapHandler(http.FileServer(gin.Dir("web", false))))
 
 	return
 }
