@@ -88,6 +88,10 @@ O'RLY 是一个简易的API服务和静态前端的组合：
 
 封面所用图片来自于 [USF ClipArt ETC](https://etc.usf.edu/clipart/) 项目。
  
+ # 致谢
+ 
+ 作者在此向[JetBrains](https://www.jetbrains.com/?from=ORLY-cover-generator)表示谢意，它提供了一份开源软件许可来支持作者的开源工作。
+ 
  # 项目许可
  
  本项目基于MIT协议开源。

@@ -88,6 +88,10 @@ This work uses TrueType version of Source Sans Pro from Adobe by Paul D. Hunt.
 
 The animal(well, not all of them are animal) images are from the [USF ClipArt ETC](https://etc.usf.edu/clipart/) project.
 
+# Acknowledgements
+
+The author would like to thank [JetBrains](https://www.jetbrains.com/?from=ORLY-cover-generator) for providing a JetBrains Open Source license for his open source developments.
+
 # License
 
 Use of this work is governed by a MIT License.
