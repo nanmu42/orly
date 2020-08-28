@@ -14,7 +14,7 @@
       :src="imgSrc"
       :placeholder="baseURL + 'example.gif'"
       :fallback="baseURL + 'error.gif'"
-      alt="Your O'RLY Book Cover"
+      alt="EPublication"
     ></progressive-img>
     <a :href="imgSrc" target="_blank" download>{{$t("download")}}</a>
   </div>
@@ -48,22 +48,22 @@
 
 <style scoped>
   .result {
-    width: 400px;
+    width: 800px;
   }
-  @media screen and (min-width: 970px) {
+  @media screen and (min-width: 1024px) {
     .result {
-      margin: 20px 0 0 50px;
+      margin: 38px 0 0 62px;
     }
   }
-  @media screen and (max-width: 970px) {
+  @media screen and (max-width: 1024px) {
     .result {
-      margin: 30px 50px 0 50px;
+      margin: 38px 62px 0 54px;
     }
   }
-  @media screen and (max-width: 401px) {
+  @media screen and (max-width: 1024px) {
     .result {
       max-width: 96%;
-      margin: 30px 0 0 0;
+      margin: 38px 0 0 0;
     }
   }
   .img, img, a {
@@ -78,8 +78,8 @@
   a {
     white-space: nowrap;
     margin: 20px 0 0 0;
-    font-size: 1.2em;
-    padding: 12px;
+    font-size: 1.105em;
+    padding: 14px;
     background: black;
     color: white;
     border: none;
@@ -89,7 +89,7 @@
   a:active {
     background: white;
     color: black;
-    box-shadow: 0 0 0 2px black inset;
+    box-shadow: 0 0 0 3px black inset;
   }
   .img {
     box-shadow: 8px 8px 30px black;
