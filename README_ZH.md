@@ -25,6 +25,23 @@ docker pull registry.cn-hongkong.aliyuncs.com/nanmu42/orly:[tag]
 
 可用tag请参阅[这里](https://github.com/nanmu42/orly/releases)。
 
+示例配置：
+
+```toml
+CoverImageDir = "cover-images"
+Debug = false
+MaxImageID = 40
+Port = ":3000"
+TitleFont = "fonts/SourceHanSerif-Bold.ttc"
+NormalFont = "fonts/SourceHanSans-Medium.ttc"
+ORLYFont = "fonts/SourceSansPro-Black.ttf"
+QueueLen = 20
+WorkerNum = 2
+Width = 1000
+```
+
+保存为文件`rly.toml`，挂载到`/app/config`，启动`/app/rly -config config/rly.toml`.
+
 # 开发
 
 使用下列命令可编译 O'RLY：
