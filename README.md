@@ -39,6 +39,8 @@ WorkerNum = 2
 Width = 1000
 ```
 
+Save as `rly.toml`, mount it into `/app/config`, and run docker image with param `/app/rly -config config/rly.toml`.
+
 # Develop O'RLY
 
 O'RLY can be built in following commands:
