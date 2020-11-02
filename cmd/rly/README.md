@@ -19,16 +19,18 @@ cp config_example.toml config.toml
 * Edit `config.toml` to suit your need, e.g:
 
 ```toml
-CoverImageDir = "../../coverimage"
+CoverImageDir = "cover-images"
 Debug = false
 MaxImageID = 40
 Port = ":3000"
-TitleFont = "../../font/SourceHanSerif-Bold.ttc"
-NormalFont = "../../font/SourceHanSans-Medium.ttc"
-ORLYFont = "../../font/SourceHanSans-Heavy.ttc"
+TitleFont = "fonts/SourceHanSerif-Bold.ttc"
+NormalFont = "fonts/SourceHanSans-Medium.ttc"
+ORLYFont = "fonts/SourceSansPro-Black.ttf"
 QueueLen = 20
-WorkerNum = 4
-Width = 800
+WorkerNum = 2
+Width = 1000
 ```
+
+Change font file path per your need.
 
 * Have fun!
