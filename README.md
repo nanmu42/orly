@@ -24,6 +24,21 @@ docker pull nanmu42/orly:[tag]
 
 Refer to https://hub.docker.com/r/nanmu42/orly/tags for available tags.
 
+Example config:
+
+```toml
+CoverImageDir = "cover-images"
+Debug = false
+MaxImageID = 40
+Port = ":3000"
+TitleFont = "fonts/SourceHanSerif-Bold.ttc"
+NormalFont = "fonts/SourceHanSans-Medium.ttc"
+ORLYFont = "fonts/SourceSansPro-Black.ttf"
+QueueLen = 20
+WorkerNum = 2
+Width = 1000
+```
+
 # Develop O'RLY
 
 O'RLY can be built in following commands:
