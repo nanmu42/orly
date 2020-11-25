@@ -10,12 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
-      uses: actions/checkout@v1
+      uses: actions/checkout@v2
     - name: Find Tag
-      id: vars
       run: echo ::set-output name=tag::${GITHUB_REF:10}
     - name: Build, tag, and push
-      id: build-image
       env:
         DOCKER_HUB_REPO: nanmu42/orly
         ALICLOUD_REPO: registry.cn-hongkong.aliyuncs.com/nanmu42/orly
