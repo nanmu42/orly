@@ -16,7 +16,7 @@ import (
 	"strings"
 )
 
-const max = 40
+const max = 41
 
 func main() {
 	var err error

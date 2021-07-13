@@ -22,6 +22,7 @@
     <div class="animal"><img src="../assets/thumbnails/10.tif.gif" alt="10"/>10</div>
     <div class="animal"><img src="../assets/thumbnails/11.tif.gif" alt="11"/>11</div>
     <div class="animal"><img src="../assets/thumbnails/12.tif.gif" alt="12"/>12</div>
+    <div class="animal"><img src="../assets/thumbnails/13.tif.gif" alt="13"/>13</div>
     <div class="animal"><img src="../assets/thumbnails/14.tif.gif" alt="14"/>14</div>
     <div class="animal"><img src="../assets/thumbnails/15.tif.gif" alt="15"/>15</div>
     <div class="animal"><img src="../assets/thumbnails/16.tif.gif" alt="16"/>16</div>
@@ -49,6 +50,7 @@
     <div class="animal"><img src="../assets/thumbnails/38.tif.gif" alt="38"/>38</div>
     <div class="animal"><img src="../assets/thumbnails/39.tif.gif" alt="39"/>39</div>
     <div class="animal"><img src="../assets/thumbnails/40.tif.gif" alt="40"/>40</div>
+    <div class="animal"><img src="../assets/thumbnails/41.tif.gif" alt="41"/>41</div>
   </div>
 </template>
 

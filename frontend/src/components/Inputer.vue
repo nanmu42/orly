@@ -31,7 +31,7 @@
 
     <label for="animal_code">{{$t("animal_code")}}</label>
     <input id="animal_code" name="animal_code" type="number" :placeholder="$t('animal_code_placeholder')"
-           v-model.number="input.animalCode" min="0" max="40">
+           v-model.number="input.animalCode" min="0" max="41">
 
     <label for="color_code">{{$t("color_code")}}</label>
     <input id="color_code" name="color_code" type="number" :placeholder="$t('color_code_placeholder')"

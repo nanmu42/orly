@@ -30,7 +30,7 @@ docker pull registry.cn-hongkong.aliyuncs.com/nanmu42/orly:[tag]
 ```toml
 CoverImageDir = "cover-images"
 Debug = false
-MaxImageID = 40
+MaxImageID = 41
 Port = ":3000"
 TitleFont = "fonts/SourceHanSerif-Bold.ttc"
 NormalFont = "fonts/SourceHanSans-Medium.ttc"
@@ -85,6 +85,7 @@ O'RLY 是一个简易的API服务和静态前端的组合：
 
 * [TahsinGokalp](https://github.com/TahsinGokalp) （土耳其语翻译）
 * [wooogi123](https://github.com/wooogi123) （韩语翻译）
+* [cauldnz](https://github.com/cauldnz) （新增动物）
 
 # 兄弟项目
 

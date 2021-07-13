@@ -78,10 +78,10 @@
         } else {
           color = this.colors[Math.floor(Math.random() * (this.colors.length - 1))].substring(1)
         }
-        if (input.animalCode !== "" && input.animalCode >= 0 && input.animalCode <= 40) {
+        if (input.animalCode !== "" && input.animalCode >= 0 && input.animalCode <= 41) {
           coverID = input.animalCode
         } else {
-          coverID = Math.floor(Math.random() * 40)
+          coverID = Math.floor(Math.random() * 41)
         }
 
         // escape user's input

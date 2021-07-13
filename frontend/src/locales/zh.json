@@ -14,7 +14,7 @@
   "required": "必填",
   "top_text": "顶部文字",
   "animal_code": "图片序号",
-  "animal_code_placeholder": "0-40（见下方图片列表，留空则随机）",
+  "animal_code_placeholder": "0-41（见下方图片列表，留空则随机）",
   "color_code": "颜色列表",
   "color_code_placeholder": "0-16（见下方颜色列表，留空则随机）",
   "submit_word": "生成封面",

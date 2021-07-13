@@ -14,7 +14,7 @@
   "required": "zorunlu",
   "top_text": "Üst Yazı",
   "animal_code": "Hayvan Kodu",
-  "animal_code_placeholder": "0-40 (Kodlar aşağıda listelenmiştir, varsayılan rastgele)",
+  "animal_code_placeholder": "0-41 (Kodlar aşağıda listelenmiştir, varsayılan rastgele)",
   "color_code": "Renk Kodu",
   "color_code_placeholder": "0-16 (Kodlar aşağıda listelenmiştir, varsayılan rastgele)",
   "submit_word": "O'RLY Üret",

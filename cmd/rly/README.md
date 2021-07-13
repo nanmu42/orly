@@ -21,7 +21,7 @@ cp config_example.toml config.toml
 ```toml
 CoverImageDir = "cover-images"
 Debug = false
-MaxImageID = 40
+MaxImageID = 41
 Port = ":3000"
 TitleFont = "fonts/SourceHanSerif-Bold.ttc"
 NormalFont = "fonts/SourceHanSans-Medium.ttc"

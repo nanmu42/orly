@@ -14,7 +14,7 @@
   "required": "필수",
   "top_text": "상단 텍스트",
   "animal_code": "동물 코드",
-  "animal_code_placeholder": "0-40 (목록은 하단에 있으며, 기본은 랜덤으로 설정)",
+  "animal_code_placeholder": "0-41 (목록은 하단에 있으며, 기본은 랜덤으로 설정)",
   "color_code": "색상 코드",
   "color_code_placeholder": "0-16 (목록은 하단에 있으며, 기본은 랜덤으로 설정)",
   "submit_word": "O'RLY 변환",

@@ -14,7 +14,7 @@
   "required": "required",
   "top_text": "Top Text",
   "animal_code": "Animal Code",
-  "animal_code_placeholder": "0-40 (listed below, defaults to random)",
+  "animal_code_placeholder": "0-41 (listed below, defaults to random)",
   "color_code": "Color Code",
   "color_code_placeholder": "0-16 (listed below, defaults to random)",
   "submit_word": "Generate O'RLY",

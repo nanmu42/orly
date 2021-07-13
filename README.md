@@ -29,7 +29,7 @@ Example config:
 ```toml
 CoverImageDir = "cover-images"
 Debug = false
-MaxImageID = 40
+MaxImageID = 41
 Port = ":3000"
 TitleFont = "fonts/SourceHanSerif-Bold.ttc"
 NormalFont = "fonts/SourceHanSans-Medium.ttc"
@@ -83,8 +83,9 @@ Or simply...
 
 Many thanks :hugs: to following contributors:
 
-* [TahsinGokalp](https://github.com/TahsinGokalp) (Turkish Translation)
-* [wooogi123](https://github.com/wooogi123) (Korean Translation)
+* [TahsinGokalp](https://github.com/TahsinGokalp) (Turkish translation)
+* [wooogi123](https://github.com/wooogi123) (Korean translation)
+* [cauldnz](https://github.com/cauldnz) (Adding new animal)
 
 # Projects in Brotherhood
 
