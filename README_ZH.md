@@ -10,10 +10,10 @@
 
 O'RLY 封面工厂是一个娱乐性的书籍封面生成器，支持输入多种语言。 O'RLY 基于Golang和Vue.js实现。
 
-<table style="padding:10px" align="center">
+<table style="padding:10px">
   <tr>
-    <td><img src="https://user-images.githubusercontent.com/8143068/47200455-d2d5e600-d3a8-11e8-8310-9125043b213a.jpeg" alt="ORLY: MySQL从入门到删数据库跑路" width=40%></td>
-    <td><img src="https://user-images.githubusercontent.com/8143068/47200457-d2d5e600-d3a8-11e8-871b-2642a65565c4.jpeg" alt="ORLY: 脚本部署要义——不要多打空格" width=40%></td>
+    <td align="center"><img src="https://user-images.githubusercontent.com/8143068/47200455-d2d5e600-d3a8-11e8-8310-9125043b213a.jpeg" alt="ORLY: MySQL从入门到删数据库跑路" width=90%></td>
+    <td align="center"><img src="https://user-images.githubusercontent.com/8143068/47200457-d2d5e600-d3a8-11e8-871b-2642a65565c4.jpeg" alt="ORLY: 脚本部署要义——不要多打空格" width=90%></td>
   </tr>
 </table>
 

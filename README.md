@@ -14,8 +14,8 @@ O'RLY Cover Generator is a parody book cover generator, implemented in Golang an
 
 <table style="padding:10px">
   <tr>
-    <td align="center"><img src="https://user-images.githubusercontent.com/8143068/147319861-edaab37d-6e87-4bf3-84c4-034a7a8c9673.jpeg" alt="ORLY: Git Branch Rescue Guide" width=80%></td>
-    <td align="center"><img src="https://user-images.githubusercontent.com/8143068/147319866-e6429227-a953-45b3-9984-ef85de0f4a94.jpeg" alt="ORLY: Float64 Math" width=80%></td>
+    <td align="center"><img src="https://user-images.githubusercontent.com/8143068/147319861-edaab37d-6e87-4bf3-84c4-034a7a8c9673.jpeg" alt="ORLY: Git Branch Rescue Guide" width=90%></td>
+    <td align="center"><img src="https://user-images.githubusercontent.com/8143068/147319866-e6429227-a953-45b3-9984-ef85de0f4a94.jpeg" alt="ORLY: Float64 Math" width=90%></td>
   </tr>
 </table>
 
