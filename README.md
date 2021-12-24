@@ -12,10 +12,10 @@ O'RLY Cover Generator is a parody book cover generator, implemented in Golang an
 
 [Click here](https://orly.nanmu.me/) to build your own O'RLY cover and troll your friends and colleagues.
 
-<table style="padding:10px" align="center">
+<table style="padding:10px">
   <tr>
-    <td><img src="https://user-images.githubusercontent.com/8143068/147319861-edaab37d-6e87-4bf3-84c4-034a7a8c9673.jpeg" alt="ORLY: Git Branch Rescue Guide" width=40%></td>
-    <td><img src="https://user-images.githubusercontent.com/8143068/147319866-e6429227-a953-45b3-9984-ef85de0f4a94.jpeg" alt="ORLY: Float64 Math" width=40%></td>
+    <td align="center"><img src="https://user-images.githubusercontent.com/8143068/147319861-edaab37d-6e87-4bf3-84c4-034a7a8c9673.jpeg" alt="ORLY: Git Branch Rescue Guide" width=80%></td>
+    <td align="center"><img src="https://user-images.githubusercontent.com/8143068/147319866-e6429227-a953-45b3-9984-ef85de0f4a94.jpeg" alt="ORLY: Float64 Math" width=80%></td>
   </tr>
 </table>
 
