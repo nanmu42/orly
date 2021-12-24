@@ -10,7 +10,7 @@
 
 O'RLY Cover Generator is a parody book cover generator, implemented in Golang and Vue.js, supporting a wide range of language including CJK.
 
-[Click here](https://orly.nanmu.me/) to build your own O'RLY cover and troll your friends and colleagues.
+[Go to the living demo](https://orly.nanmu.me/) to build your own O'RLY cover and troll your friends and colleagues.
 
 <table style="padding:10px">
   <tr>
