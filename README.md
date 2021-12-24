@@ -53,7 +53,7 @@ O'RLY can be built in following commands:
 ```bash
 mkdir -p assets
 cd assets
-wget -nc https://github.com/nanmu42/orly/releases/download/1.1.0-beta/cover-images.tar.xz
+wget -nc https://github.com/nanmu42/orly/releases/download/1.5.0-beta/cover-images.tar.xz
 wget -nc https://github.com/nanmu42/orly/releases/download/1.1.0-beta/fonts.tar.xz
 cd ..
 make all
