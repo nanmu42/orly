@@ -8,12 +8,16 @@
 
 # O'RLY 封面工厂
 
-O'RLY 封面工厂是一个娱乐性的书籍封面生成器，
-支持输入多种语言。
+O'RLY 封面工厂是一个娱乐性的书籍封面生成器，支持输入多种语言。 O'RLY 基于Golang和Vue.js实现。
 
-O'RLY 基于Golang和Vue.js实现。
+你可以[点击这里](https://orly.nanmu.me/)创建你自己的O'RLY 封面，惊呆你的朋友和同事。
 
-你可以[点击这里](https://orly.nanmu.me/)访问O'RLY 封面工厂。
+<table style="padding:10px">
+  <tr>
+    <td align="center"><img src="https://user-images.githubusercontent.com/8143068/47200455-d2d5e600-d3a8-11e8-8310-9125043b213a.jpeg" alt="ORLY: MySQL从入门到删数据库跑路" width=90%></td>
+    <td align="center"><img src="https://user-images.githubusercontent.com/8143068/47200457-d2d5e600-d3a8-11e8-871b-2642a65565c4.jpeg" alt="ORLY: 脚本部署要义——不要多打空格" width=90%></td>
+  </tr>
+</table>
 
 Docker镜像信息可以在[此处](https://hub.docker.com/r/nanmu42/orly)获取。
 
@@ -49,7 +53,7 @@ Width = 1000
 ```bash
 mkdir -p assets
 cd assets
-wget -nc https://github.com/nanmu42/orly/releases/download/1.1.0-beta/cover-images.tar.xz
+wget -nc https://github.com/nanmu42/orly/releases/download/1.5.0-beta/cover-images.tar.xz
 wget -nc https://github.com/nanmu42/orly/releases/download/1.1.0-beta/fonts.tar.xz
 cd ..
 make all

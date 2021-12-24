@@ -8,13 +8,18 @@
 
 # O'RLY Cover Generator
 
-O'RLY Cover Generator is a parody book cover generator, 
-implemented in Golang and Vue.js,
-supporting a wide range of language including CJK.
+O'RLY Cover Generator is a parody book cover generator, implemented in Golang and Vue.js, supporting a wide range of language including CJK.
 
-O'RLY is living at https://orly.nanmu.me/
+[Go to the living demo](https://orly.nanmu.me/) to build your own O'RLY cover and troll your friends and colleagues.
 
-Docker images can be found at https://hub.docker.com/r/nanmu42/orly
+<table style="padding:10px">
+  <tr>
+    <td align="center"><img src="https://user-images.githubusercontent.com/8143068/147319861-edaab37d-6e87-4bf3-84c4-034a7a8c9673.jpeg" alt="ORLY: Git Branch Rescue Guide" width=90%></td>
+    <td align="center"><img src="https://user-images.githubusercontent.com/8143068/147319866-e6429227-a953-45b3-9984-ef85de0f4a94.jpeg" alt="ORLY: Float64 Math" width=90%></td>
+  </tr>
+</table>
+
+Docker images can be found [here](https://hub.docker.com/r/nanmu42/orly).
 
 # Docker Image
 
@@ -48,7 +53,7 @@ O'RLY can be built in following commands:
 ```bash
 mkdir -p assets
 cd assets
-wget -nc https://github.com/nanmu42/orly/releases/download/1.1.0-beta/cover-images.tar.xz
+wget -nc https://github.com/nanmu42/orly/releases/download/1.5.0-beta/cover-images.tar.xz
 wget -nc https://github.com/nanmu42/orly/releases/download/1.1.0-beta/fonts.tar.xz
 cd ..
 make all
@@ -112,6 +117,6 @@ The author would like to thank [JetBrains](https://www.jetbrains.com/?from=ORLY-
 
 # License
 
-Use of this work is governed by a MIT License.
+Use of this work is governed by the MIT License.
 
 You may find a license copy in project root.
