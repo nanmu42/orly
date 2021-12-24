@@ -184,16 +184,5 @@ func RequestLogger(l *zap.Logger) gin.HandlerFunc {
 				return
 			}
 		}
-		l.Info("APIAuditLog",
-			zap.Uint64("seq", sequence),
-			zap.String("method", c.Request.Method),
-			zap.Int("status", c.Writer.Status()),
-			zap.String("URL", c.Request.RequestURI),
-			zap.String("IP", c.ClientIP()),
-			zap.String("UA", c.Request.UserAgent()),
-			zap.String("ref", c.Request.Referer()),
-			zap.Duration("lapse", time.Since(receivedAt)),
-			zap.Strings("err", c.Errors.Errors()),
-		)
 	}
 }
