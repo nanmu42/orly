@@ -11,13 +11,11 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    - name: Find Tag
-      run: echo ::set-output name=tag::${GITHUB_REF:10}
     - name: Build, tag, and push
       env:
         DOCKER_HUB_REPO: nanmu42/orly
         ALICLOUD_REPO: registry.cn-hongkong.aliyuncs.com/nanmu42/orly
-        IMAGE_TAG: ${{ steps.vars.outputs.tag }}
+        IMAGE_TAG: ${{ github.ref_name }}
         DOCKER_HUB_USER: ${{ secrets.DOCKER_HUB_USER }}
         DOCKER_HUB_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
         ALICLOUD_USER: ${{ secrets.ALICLOUD_USER }}
