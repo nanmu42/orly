@@ -16,9 +16,9 @@
   },
   "devDependencies": {
     "@kazupon/vue-i18n-loader": "^0.3.0",
-    "@vue/cli-plugin-babel": "^3.0.4",
-    "@vue/cli-plugin-eslint": "^3.0.4",
-    "@vue/cli-plugin-pwa": "^3.0.4",
+    "@vue/cli-plugin-babel": "^3.12.1",
+    "@vue/cli-plugin-eslint": "^5.0.8",
+    "@vue/cli-plugin-pwa": "^3.12.1",
     "@vue/cli-service": "^5.0.8",
     "deepmerge": "^2.2.1",
     "vue-cli-plugin-i18n": "^0.5.1",
