@@ -4,7 +4,7 @@ go 1.13
 
 require (
 	github.com/disintegration/imaging v1.6.2
-	github.com/gin-gonic/gin v1.7.0
+	github.com/gin-gonic/gin v1.7.7
 	github.com/golang/freetype v0.0.0-20170609003504-e2365dfdc4a0
 	github.com/nanmu42/gzip v0.8.0
 	github.com/pelletier/go-toml v1.6.0
