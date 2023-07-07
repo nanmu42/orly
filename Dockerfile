@@ -1,5 +1,5 @@
-FROM golang:alpine3.11 as golang
-RUN apk --no-cache add make git tar tzdata ca-certificates nodejs yarn wget
+FROM golang:alpine3.17 as golang
+RUN apk --no-cache add make git tar tzdata ca-certificates nodejs=16.15.1 yarn wget
 WORKDIR /app
 COPY . .
 RUN mkdir -p assets && \
@@ -8,7 +8,7 @@ RUN mkdir -p assets && \
         wget -nc https://github.com/nanmu42/orly/releases/download/1.1.0-beta/fonts.tar.xz
 RUN make all
 
-FROM alpine:3.11
+FROM alpine:3.17
 # Maintainer Info
 LABEL maintainer="nanmu42<i@nanmu.me>"
 # Dependencies

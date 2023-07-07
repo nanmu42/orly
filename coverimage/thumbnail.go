@@ -1,3 +1,4 @@
+//go:build thumbnail
 // +build thumbnail
 
 /*
@@ -16,7 +17,6 @@ import (
 	"image"
 	"image/draw"
 	"image/gif"
-	"io/ioutil"
 	"os"
 	"strings"
 
@@ -50,9 +50,9 @@ func main() {
 		return
 	}
 
-	info, err := ioutil.ReadDir(".")
+	info, err := os.ReadDir(".")
 	if err != nil {
-		err = errors.Wrap(err, "ioutil.ReadDir")
+		err = errors.Wrap(err, "os.ReadDir")
 		return
 	}
 

@@ -1,7 +1,7 @@
 package orly
 
 import (
-	"io/ioutil"
+	"os"
 
 	"github.com/golang/freetype"
 	"github.com/golang/freetype/truetype"
@@ -10,7 +10,7 @@ import (
 
 // LoadFont loads and parses font from file system
 func LoadFont(fileName string) (loaded *truetype.Font, err error) {
-	fileBytes, err := ioutil.ReadFile(fileName)
+	fileBytes, err := os.ReadFile(fileName)
 	if err != nil {
 		err = errors.Wrap(err, "ReadFile")
 		return

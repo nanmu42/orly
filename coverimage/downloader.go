@@ -1,3 +1,4 @@
+//go:build downloader
 // +build downloader
 
 /*
@@ -18,7 +19,6 @@ import (
 	"bufio"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
@@ -74,9 +74,9 @@ func main() {
 }
 
 func readDir() (downloaded *sync.Map, err error) {
-	files, err := ioutil.ReadDir(".")
+	files, err := os.ReadDir(".")
 	if err != nil {
-		err = errors.Wrap(err, "ioutil.ReadDir")
+		err = errors.Wrap(err, "os.ReadDir")
 		return
 	}
 
@@ -91,9 +91,9 @@ func readDir() (downloaded *sync.Map, err error) {
 }
 
 func readList(fileName string) (URLs []string, err error) {
-	content, err := ioutil.ReadFile(fileName)
+	content, err := os.ReadFile(fileName)
 	if err != nil {
-		err = errors.Wrap(err, "ioutil.ReadFile")
+		err = errors.Wrap(err, "os.ReadFile")
 		return
 	}
 	// list is divided by return
