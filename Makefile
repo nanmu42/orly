@@ -21,7 +21,7 @@ config: dir
 
 frontend: dir
 	cd frontend && \
-	yarn install && yarn build && \
+	pnpm install && pnpm build && \
 	cp -r dist/* $(PWD)/bin/web
 
 rly: rly.bin

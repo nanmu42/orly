@@ -1,5 +1,7 @@
-FROM golang:alpine3.17 as golang
-RUN apk --no-cache add make git tar tzdata ca-certificates nodejs=16.15.1 yarn wget
+FROM golang:alpine3.20 as golang
+RUN apk --no-cache add make git tar tzdata ca-certificates nodejs=20.13.1-r0 wget xz
+RUN wget -qO /bin/pnpm "https://github.com/pnpm/pnpm/releases/latest/download/pnpm-linuxstatic-x64" && chmod +x /bin/pnpm
+
 WORKDIR /app
 COPY . .
 RUN mkdir -p assets && \
