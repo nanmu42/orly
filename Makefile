@@ -11,6 +11,12 @@ dir:
 	mkdir -p bin/fonts && \
 	mkdir -p bin/cover-images
 
+assets:
+	mkdir -p assets && \
+	cd assets && \
+	wget -nc https://github.com/nanmu42/orly/releases/download/1.5.0-beta/cover-images.tar.xz && \
+	wget -nc https://github.com/nanmu42/orly/releases/download/1.1.0-beta/fonts.tar.xz
+
 clean:
 	rm -rf bin
 
@@ -26,11 +32,11 @@ frontend: dir
 
 rly: rly.bin
 
-fonts: dir
+fonts: dir assets
 	cd assets && \
 	tar -xf fonts.tar.xz --skip-old-files -C $(PWD)/bin/fonts
 
-covers: dir
+covers: dir assets
 	cd assets && \
 	tar -xf cover-images.tar.xz --skip-old-files -C $(PWD)/bin/cover-images
 

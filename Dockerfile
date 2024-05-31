@@ -4,13 +4,10 @@ RUN wget -qO /bin/pnpm "https://github.com/pnpm/pnpm/releases/latest/download/pn
 
 WORKDIR /app
 COPY . .
-RUN mkdir -p assets && \
-        cd assets && \
-        wget -nc https://github.com/nanmu42/orly/releases/download/1.5.0-beta/cover-images.tar.xz && \
-        wget -nc https://github.com/nanmu42/orly/releases/download/1.1.0-beta/fonts.tar.xz
+RUN make assets
 RUN make all
 
-FROM alpine:3.17
+FROM alpine3.20
 # Maintainer Info
 LABEL maintainer="nanmu42<i@nanmu.me>"
 # Dependencies
