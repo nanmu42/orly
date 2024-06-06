@@ -90,6 +90,7 @@ O'RLY 是一个简易的API服务和静态前端的组合：
 * [TahsinGokalp](https://github.com/TahsinGokalp) （土耳其语翻译）
 * [wooogi123](https://github.com/wooogi123) （韩语翻译）
 * [cauldnz](https://github.com/cauldnz) （新增动物）
+* [Jessica Sachs](https://github.com/JessicaSachs) (项目维护者！)
 
 # 兄弟项目
 

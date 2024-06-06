@@ -51,11 +51,7 @@ Save as `rly.toml`, mount it into `/app/config`, and run docker image with param
 O'RLY can be built in following commands:
 
 ```bash
-mkdir -p assets
-cd assets
-wget -nc https://github.com/nanmu42/orly/releases/download/1.5.0-beta/cover-images.tar.xz
-wget -nc https://github.com/nanmu42/orly/releases/download/1.1.0-beta/fonts.tar.xz
-cd ..
+make assets
 make all
 ```
 
@@ -91,6 +87,7 @@ Many thanks :hugs: to following contributors:
 * [TahsinGokalp](https://github.com/TahsinGokalp) (Turkish translation)
 * [wooogi123](https://github.com/wooogi123) (Korean translation)
 * [cauldnz](https://github.com/cauldnz) (Adding new animal)
+* [Jessica Sachs](https://github.com/JessicaSachs) (Project maintainer!)
 
 # Projects in Brotherhood
 
