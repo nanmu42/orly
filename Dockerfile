@@ -7,7 +7,7 @@ COPY . .
 RUN make assets
 RUN make all
 
-FROM alpine3.20
+FROM alpine:3.20
 # Maintainer Info
 LABEL maintainer="nanmu42<i@nanmu.me>"
 # Dependencies
