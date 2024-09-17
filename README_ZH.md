@@ -91,6 +91,7 @@ O'RLY 是一个简易的API服务和静态前端的组合：
 * [wooogi123](https://github.com/wooogi123) （韩语翻译）
 * [cauldnz](https://github.com/cauldnz) （新增动物）
 * [Jessica Sachs](https://github.com/JessicaSachs) (项目维护者！)
+* [Hervé](https://github.com/hervehobbes) (法语翻译)
 
 # 兄弟项目
 
@@ -101,22 +102,20 @@ O'RLY 是一个简易的API服务和静态前端的组合：
 
 # 注解
 
-"O'RLY 封面工厂" 仅为娱乐，与O'Reilly Media没有任何联系。 
+"O'RLY 封面工厂" 仅为娱乐，与O'Reilly Media没有任何联系。
 
-本作品使用了由Google和Adobe牵头制作的思源宋体以及思源黑体，
- 中国的常州华文、韩国的 Sandoll Communications、日本的 Iwata Corporation
- 参与了上述字体的设计制作。 
- 
+本作品使用了由Google和Adobe牵头制作的思源宋体以及思源黑体， 中国的常州华文、韩国的 Sandoll Communications、日本的 Iwata Corporation 参与了上述字体的设计制作。
+
 本作品使用了由Adobe牵头制作的Source Sans Pro，设计师为Paul D. Hunt.
 
 封面所用图片来自于 [USF ClipArt ETC](https://etc.usf.edu/clipart/) 项目。
- 
- # 致谢
- 
- 作者在此向[JetBrains](https://www.jetbrains.com/?from=ORLY-cover-generator)表示谢意，它提供了一份开源软件许可来支持作者的开源工作。
- 
- # 项目许可
- 
- 本项目基于MIT协议开源。
- 
- 您可以在项目根目录找到一份协议内容拷贝。
+
+# 致谢
+
+作者在此向[JetBrains](https://www.jetbrains.com/?from=ORLY-cover-generator)表示谢意，它提供了一份开源软件许可来支持作者的开源工作。
+
+# 项目许可
+
+本项目基于MIT协议开源。
+
+您可以在项目根目录找到一份协议内容拷贝。

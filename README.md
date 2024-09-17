@@ -88,6 +88,7 @@ Many thanks :hugs: to following contributors:
 * [wooogi123](https://github.com/wooogi123) (Korean translation)
 * [cauldnz](https://github.com/cauldnz) (Adding new animal)
 * [Jessica Sachs](https://github.com/JessicaSachs) (Project maintainer!)
+* [Hervé](https://github.com/hervehobbes) (French translation)
 
 # Projects in Brotherhood
 
